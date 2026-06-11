@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0B111E;
+  --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Chrome / metallic gradient text utility */
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f8f8f8 25%,
+    #e8e8e8 50%,
+    #f4f4f4 75%,
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 35s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Entrance animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease both;
+}
+
+/* ── Hero entrance animations ── */
+
+@keyframes bgZoomReveal {
+  from { opacity: 0; transform: scale(1.08); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heroClipReveal {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0% 0 0);   opacity: 1; }
+}
+
+
+@keyframes heroFadeInUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroScaleIn {
+  0%   { opacity: 0; transform: scale(0.88) translateY(10px); }
+  65%  { transform: scale(1.04) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Base hidden states — active before hero:ready fires */
+.hero-bg       { opacity: 0; }
+.hero-item     { opacity: 0; }
+.hero-headline { opacity: 0; clip-path: inset(0 100% 0 0); }
+.hero-cta      { opacity: 0; }
+
+/* Animated states — toggled by adding .is-ready via JS */
+.hero-bg.is-ready {
+  animation: bgZoomReveal 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-item.is-ready {
+  animation: heroFadeInUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay, 0ms) both;
+}
+.hero-headline.is-ready {
+  animation: heroClipReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+}
+.hero-cta.is-ready {
+  animation: heroScaleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 620ms both;
+}
+
+/* ── Bento grid scroll reveal (transition-based) ── */
+
+/* Card base — hidden, with directional starting transform */
+.bento-card {
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bento-card.from-left   { transform: translateX(-48px); }
+.bento-card.from-right  { transform: translateX(48px); }
+.bento-card.from-bottom { transform: translateY(48px); }
+
+/* Visible — transitions play automatically */
+.bento-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Inner elements — hidden with upward offset */
+.bento-label,
+.bento-heading,
+.bento-body,
+.bento-cta,
+.bento-img,
+.bento-feature {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Stagger inner content when card becomes visible */
+.bento-card.is-visible .bento-label   { opacity: 1; transform: none; transition-delay: 200ms; }
+.bento-card.is-visible .bento-heading { opacity: 1; transform: none; transition-delay: 320ms; }
+.bento-card.is-visible .bento-body    { opacity: 1; transform: none; transition-delay: 430ms; }
+.bento-card.is-visible .bento-cta     { opacity: 1; transform: none; transition-delay: 530ms; }
+.bento-card.is-visible .bento-img     { opacity: 1; transform: none; transition-delay: 600ms; }
+/* .bento-feature uses inline transition-delay for per-item stagger */
+.bento-card.is-visible .bento-feature { opacity: 1; transform: none; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
