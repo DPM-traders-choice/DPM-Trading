@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import WaveBar from './WaveBar'
 
 const TESTIMONIALS = [
   {
@@ -79,14 +80,17 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white py-14 md:py-20"
+      className="bg-white pb-14 md:pb-20"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'none' : 'translateY(40px)',
         transition: 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)',
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      {/* Interactive bar visualizer */}
+      <WaveBar />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-10 md:pt-14">
 
         {/* Header row */}
         <div className="flex items-start justify-between gap-6 mb-10">
@@ -172,12 +176,7 @@ export default function Testimonials() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0 ring-2 ring-white">
-                    <Image
-                      src={t.avatar}
-                      alt={t.name}
-                      fill
-                      className="object-cover"
-                    />
+                    <Image src={t.avatar} alt={t.name} fill className="object-cover" />
                   </div>
                   <div>
                     <p className="text-base font-bold text-slate-800">{t.name}</p>

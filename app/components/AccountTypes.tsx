@@ -99,25 +99,32 @@ function SvgPattern({ pattern, id, color }: { pattern: string; id: string; color
   return null
 }
 
+// Per-card starting transforms (corner directions)
+const DIRECTIONS = [
+  'translate(-120px, -80px)', // top-left
+  'translate( 120px, -80px)', // top-right
+  'translate(-120px,  80px)', // bottom-left
+  'translate( 120px,  80px)', // bottom-right
+]
+
 export default function AccountTypes() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [hovered, setHovered] = useState<number | null>(null)
+  const [hovered, setHovered]   = useState<number | null>(null)
+  const [visible, setVisible]   = useState(false)
 
   useEffect(() => {
-    const cards = sectionRef.current?.querySelectorAll('.bento-card')
-    if (!cards) return
+    const el = sectionRef.current
+    if (!el) return
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible')
-            observer.unobserve(entry.target)
-          }
-        })
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -80px 0px' }
+      { threshold: 0.15, rootMargin: '0px 0px -120px 0px' }
     )
-    cards.forEach(card => observer.observe(card))
+    observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
@@ -146,13 +153,13 @@ export default function AccountTypes() {
         {/* 2×2 Bento grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {ACCOUNTS.map((acc, i) => {
-            const dir = i % 2 === 0 ? 'from-left' : 'from-right'
             const isHovered = hovered === i
+            const delay = 300 + i * 200
 
             return (
               <div
                 key={acc.id}
-                className={`bento-card ${dir} relative rounded-3xl overflow-hidden flex flex-col justify-between`}
+                className="relative rounded-3xl overflow-hidden flex flex-col justify-between"
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
                 style={{
@@ -160,9 +167,10 @@ export default function AccountTypes() {
                   background: 'linear-gradient(135deg, #080f1f 0%, #0c1a38 100%)',
                   border: `1px solid ${isHovered ? acc.accent + '40' : 'rgba(255,255,255,0.06)'}`,
                   boxShadow: isHovered ? `0 0 40px ${acc.accent}18` : 'none',
-                  transition: 'border-color 0.4s ease, box-shadow 0.4s ease',
-                  '--bento-delay': `${i * 80}ms`,
-                } as React.CSSProperties}
+                  opacity:   visible ? 1 : 0,
+                  transform: visible ? 'translate(0,0)' : DIRECTIONS[i],
+                  transition: `opacity 1.2s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 1.2s cubic-bezier(0.16,1,0.3,1) ${delay}ms, border-color 0.4s ease, box-shadow 0.4s ease`,
+                }}
               >
                 {/* SVG pattern — unique per card */}
                 <SvgPattern pattern={acc.pattern} id={acc.id} color={acc.accent} />
@@ -194,34 +202,29 @@ export default function AccountTypes() {
                   <div className="flex flex-col gap-4 flex-1 min-w-0">
 
                     {/* Accent dot + label */}
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{ background: acc.accent, boxShadow: `0 0 8px ${acc.accent}` }}
-                      />
-                      <span
-                        className="text-xs font-bold tracking-widest uppercase"
-                        style={{ color: acc.accent }}
-                      >
+                    <div className="flex items-center gap-2"
+                      style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 200}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 200}ms` }}>
+                      <span className="w-2 h-2 rounded-full shrink-0"
+                        style={{ background: acc.accent, boxShadow: `0 0 8px ${acc.accent}` }} />
+                      <span className="text-xs font-bold tracking-widest uppercase" style={{ color: acc.accent }}>
                         {acc.id}
                       </span>
                     </div>
 
-                    <h3 className="chrome-text text-xl md:text-2xl font-black tracking-tight leading-tight">
+                    <h3 className="chrome-text text-xl md:text-2xl font-black tracking-tight leading-tight"
+                      style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 320}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 320}ms` }}>
                       {acc.label}
                     </h3>
 
-                    <p className="text-sm text-white/45 font-medium leading-relaxed max-w-[260px]">
+                    <p className="text-sm text-white/45 font-medium leading-relaxed max-w-65"
+                      style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 420}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 420}ms` }}>
                       {acc.description}
                     </p>
 
                     <Link
                       href="#"
                       className="flex items-center gap-1.5 text-sm font-bold w-fit mt-1 transition-all duration-300"
-                      style={{
-                        color: isHovered ? acc.accent : 'rgba(255,255,255,0.7)',
-                      }}
-                    >
+                      style={{ color: isHovered ? acc.accent : 'rgba(255,255,255,0.7)', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `color 0.3s, opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 520}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 520}ms` }}>
                       Open Account <ArrowUpRight size={15} strokeWidth={2.5} />
                     </Link>
                   </div>

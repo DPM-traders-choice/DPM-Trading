@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import Header from "@/app/components/Header";
+import AnnouncementBar from "@/app/components/AnnouncementBar";
+import Footer from "@/app/components/Footer";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import ScrollReset from "@/app/components/ScrollReset";
+import SmoothScroll from "@/app/components/SmoothScroll";
 import "./globals.css";
 
 const inter = Inter({
@@ -53,11 +56,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#0B111E] text-white">
+      <body className="min-h-full flex flex-col bg-[#0B111E] text-white overflow-x-hidden">
         <ScrollReset />
+        <SmoothScroll />
         <LoadingScreen />
         <Header />
+        <AnnouncementBar />
         {children}
+        <Footer />
       </body>
     </html>
   );
