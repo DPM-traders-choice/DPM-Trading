@@ -80,7 +80,7 @@ const NAV_ITEMS: NavItem[] = [
 
 function Logo({ scrolled }: { scrolled: boolean }) {
   return (
-    <div className="relative h-16 w-56">
+    <div className="relative h-16 w-52">
       {/* Gold logo — visible on dark background */}
       <Image
         src="/logoGold.png"
@@ -170,56 +170,6 @@ export default function Header() {
       }`}
     >
 
-      {/* ── Sub-header: Language switcher — hidden on scroll ── */}
-      <div
-        className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: scrolled ? 0 : 72, opacity: scrolled ? 0 : 1 }}
-      >
-        <div className="pt-6 pb-1">
-          <div className="max-w-345 mx-auto px-6 md:px-12 flex items-center justify-end">
-            <div ref={langRef} className="relative z-10">
-              <button
-                onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-2 px-2 py-1 text-sm font-semibold text-white/70 hover:text-white transition-colors duration-200"
-              >
-                <span className="text-sm leading-none">{selectedLang.flag}</span>
-                <span>{selectedLang.label}</span>
-                <ChevronDown
-                  size={12}
-                  strokeWidth={2.5}
-                  className={`transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-
-              <div
-                className={`absolute top-[calc(100%+6px)] right-0 min-w-40 transition-all duration-200 ease-out origin-top-right ${
-                  langOpen
-                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
-                    : 'opacity-0 -translate-y-1 scale-95 pointer-events-none'
-                }`}
-              >
-                <div className="rounded-2xl bg-white border border-gray-100 overflow-hidden py-1.5 font-sans shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-                  {LANGUAGES.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => handleLanguageSelect(lang)}
-                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-left transition-colors duration-150 ${
-                        selectedLang.code === lang.code
-                          ? 'text-[#0c1422] bg-gray-50'
-                          : 'text-[#2d3748] hover:text-[#0c1422] hover:bg-gray-50'
-                      }`}
-                    >
-                      <span className="text-base leading-none">{lang.flag}</span>
-                      <span>{lang.label}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ── Main navigation bar ── */}
       <div className="max-w-345 mx-auto px-6 md:px-12 h-22 flex items-center justify-between">
 
@@ -301,7 +251,12 @@ export default function Header() {
         <div className="hidden lg:flex items-center">
           <Link
             href="#"
-            className="px-6 py-2.5 text-base font-semibold rounded-lg transition-all duration-200 tracking-wide text-white bg-blue-600 hover:bg-blue-500 shadow-sm"
+            className="px-6 py-2.5 text-sm font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-85"
+            style={{
+              background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
+              color: '#1a0f00',
+              boxShadow: '0 4px 20px rgba(212,168,67,0.45)',
+            }}
           >
             Login
           </Link>
@@ -397,7 +352,12 @@ export default function Header() {
           <div className="pt-3 pb-4">
             <Link
               href="#"
-              className="block w-full py-2.5 text-center text-base font-semibold rounded-lg transition-all duration-200 shadow-sm text-white bg-blue-600 hover:bg-blue-500"
+              className="block w-full py-2.5 text-center text-sm font-bold rounded-lg transition-opacity duration-200 hover:opacity-85"
+              style={{
+                background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
+                color: '#1a0f00',
+                boxShadow: '0 4px 20px rgba(212,168,67,0.45)',
+              }}
             >
               Login
             </Link>

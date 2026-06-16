@@ -18,8 +18,8 @@ export default function StatCards() {
     <>
       <style>{`
         @keyframes stat-scroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-25%); }
+          0%   { transform: translateX(-25%); }
+          100% { transform: translateX(0); }
         }
       `}</style>
 
@@ -54,7 +54,12 @@ export default function StatCards() {
                   minWidth: '210px',
                 }}
               >
-                <stat.Icon size={28} strokeWidth={1.6} className="text-blue-400 shrink-0" />
+                <stat.Icon
+                  size={28}
+                  strokeWidth={1.6}
+                  className="shrink-0"
+                  style={{ color: '#D4A843', filter: 'drop-shadow(0 0 6px rgba(212,168,67,0.5))' }}
+                />
 
                 {/* Text */}
                 <div>

@@ -89,7 +89,7 @@ export default function WhyChooseUs() {
                 transform: hovered === 0 ? 'scale(1.12)' : 'scale(1)',
               }}
             >
-              <Image src="/Trophy.png" alt="Trophy" fill className="object-contain object-bottom drop-shadow-2xl" />
+              <Image src="/Trophy.png" alt="Trophy" fill sizes="(max-width:768px) 100vw, 33vw" className="object-contain object-bottom drop-shadow-2xl" />
             </div>
           </div>
 
@@ -139,7 +139,7 @@ export default function WhyChooseUs() {
                 transform: hovered === 1 ? 'scale(1.12)' : 'scale(1)',
               }}
             >
-              <Image src="/client.png" alt="Clients" fill className="object-contain object-bottom drop-shadow-2xl" />
+              <Image src="/client.png" alt="Clients" fill sizes="(max-width:768px) 100vw, 33vw" className="object-contain object-bottom drop-shadow-2xl" />
             </div>
           </div>
 
@@ -210,7 +210,7 @@ export default function WhyChooseUs() {
                 transform: hovered === 2 ? 'scale(1.12)' : 'scale(1)',
               }}
             >
-              <Image src="/prsentbox.png" alt="Partnership" fill className="object-contain object-bottom drop-shadow-2xl" />
+              <Image src="/prsentbox.png" alt="Partnership" fill sizes="(max-width:768px) 100vw, 33vw" className="object-contain object-bottom drop-shadow-2xl" />
             </div>
           </div>
 

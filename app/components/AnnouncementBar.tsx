@@ -1,22 +1,58 @@
 'use client'
 
-const ITEMS = [
-  { label: 'New',    text: 'Zero commission on all trades this weekend' },
-  { label: 'Offer',  text: 'Welcome bonus up to $500 on first deposit'  },
-  { label: 'VIP',    text: 'Priority accounts now open — limited slots' },
-  { label: 'Update', text: 'Instant withdrawals available 24/7'         },
-  { label: 'Promo',  text: 'Refer a friend and earn $200 per referral'  },
-  { label: 'Live',   text: '50+ crypto pairs added to the platform'     },
+const TICKERS = [
+  { symbol: 'EUR/USD', price: '1.08432', change: '+0.23%', up: true  },
+  { symbol: 'GBP/USD', price: '1.27185', change: '-0.14%', up: false },
+  { symbol: 'BTC/USD', price: '67,245',  change: '+2.81%', up: true  },
+  { symbol: 'ETH/USD', price: '3,512',   change: '+1.47%', up: true  },
+  { symbol: 'XAU/USD', price: '2,341',   change: '+0.56%', up: true  },
+  { symbol: 'USD/JPY', price: '154.820', change: '-0.09%', up: false },
+  { symbol: 'S&P 500', price: '5,248',   change: '+0.32%', up: true  },
+  { symbol: 'NASDAQ',  price: '16,428',  change: '+0.61%', up: true  },
+  { symbol: 'OIL/USD', price: '78.45',   change: '-0.88%', up: false },
+  { symbol: 'USD/CAD', price: '1.36540', change: '+0.11%', up: true  },
+  { symbol: 'AUS/USD', price: '0.65210', change: '-0.19%', up: false },
+  { symbol: 'DOW',     price: '38,996',  change: '+0.28%', up: true  },
 ]
 
+function TickerItem({ symbol, price, change, up }: typeof TICKERS[0]) {
+  return (
+    <span className="inline-flex items-center gap-2.5 whitespace-nowrap">
+      {/* Symbol */}
+      <span className="text-[11px] font-bold tracking-[0.08em] text-white/90">
+        {symbol}
+      </span>
+      {/* Price */}
+      <span className="text-[11px] font-medium text-white/55">
+        {price}
+      </span>
+      {/* Arrow + Change */}
+      <span
+        className="inline-flex items-center gap-0.5 text-[10px] font-bold"
+        style={{ color: up ? '#4ade80' : '#f87171' }}
+      >
+        <svg width="7" height="7" viewBox="0 0 7 7" fill="currentColor" aria-hidden>
+          {up
+            ? <path d="M3.5 0L7 7H0L3.5 0Z"/>
+            : <path d="M3.5 7L0 0H7L3.5 7Z"/>
+          }
+        </svg>
+        {change}
+      </span>
+    </span>
+  )
+}
+
+function Divider() {
+  return (
+    <span className="mx-6 text-white/10 select-none text-[10px]" aria-hidden>|</span>
+  )
+}
+
 export default function AnnouncementBar() {
-  const content = ITEMS.flatMap((item, i) => [
-    <span key={i} className="inline-flex items-center gap-2.5 whitespace-nowrap">
-      <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-white/90">{item.label}</span>
-      <span className="w-px h-3 bg-white/20 shrink-0" />
-      <span className="text-[11px] text-white/45">{item.text}</span>
-    </span>,
-    <span key={`s${i}`} className="mx-8 text-white/15 select-none" aria-hidden>—</span>,
+  const content = TICKERS.flatMap((t, i) => [
+    <TickerItem key={i} {...t} />,
+    <Divider key={`d${i}`} />,
   ])
 
   return (

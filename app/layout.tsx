@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono, Cormorant_Garamond, Raleway } from "next/font/google";
 import Header from "@/app/components/Header";
 import AnnouncementBar from "@/app/components/AnnouncementBar";
 import Footer from "@/app/components/Footer";
@@ -17,6 +17,20 @@ const inter = Inter({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  display: "swap",
+  weight: ["600", "700"],
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  variable: "--font-raleway",
+  display: "swap",
+  weight: ["800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -54,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${cormorant.variable} ${raleway.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0B111E] text-white overflow-x-hidden">
         <ScrollReset />

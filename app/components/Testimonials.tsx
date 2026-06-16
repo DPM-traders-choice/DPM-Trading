@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import WaveBar from './WaveBar'
 
 const TESTIMONIALS = [
   {
@@ -80,16 +79,13 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white pb-14 md:pb-20"
+      className="bg-white py-14 md:py-20"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'none' : 'translateY(40px)',
         transition: 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)',
       }}
     >
-      {/* Interactive bar visualizer */}
-      <WaveBar />
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-10 md:pt-14">
 
         {/* Header row */}

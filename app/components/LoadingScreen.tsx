@@ -19,8 +19,8 @@ const CANDLES: [number, number, number, number, number, boolean][] = [
   [174, 10, 20,   4,  38, true ],
 ]
 
-const GREEN = '#60a5fa'
-const RED   = '#93c5fd'
+const GREEN = '#D4A843'
+const RED   = '#F0CC70'
 
 export default function LoadingScreen() {
   const [visible, setVisible]   = useState(0)
