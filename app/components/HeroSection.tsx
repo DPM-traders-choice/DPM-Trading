@@ -8,6 +8,15 @@ import SplitText from './SplitText'
 
 const SLIDES = [
   {
+    trust: 'Industry-Leading Trading Technology',
+    headline: ['World Leading MT5', 'Trading Platform!'],
+    desc: 'MetaTrader 5 delivers lightning-fast execution, intuitive navigation, and advanced charting tools, making it ideal for traders of all experience levels.',
+    features: [
+      ['Available on WebTrader, iOS, Android and Desktop'],
+      ['Trade Stocks as they should be traded'],
+    ],
+  },
+  {
     trust: 'Trusted by over 20 Million Traders',
     headline: ['Top Tier Brokerage', 'Conditions'],
     desc: null,
@@ -24,15 +33,6 @@ const SLIDES = [
     features: [
       ['Forex', 'Futures', 'Shares'],
       ['Cryptos', 'Metals', 'Indices'],
-    ],
-  },
-  {
-    trust: 'Industry-Leading Trading Technology',
-    headline: ['World Leading MT5', 'Trading Platform!'],
-    desc: 'MetaTrader 5 delivers lightning-fast execution, intuitive navigation, and advanced charting tools, making it ideal for traders of all experience levels.',
-    features: [
-      ['Available on WebTrader, iOS, Android and Desktop'],
-      ['Trade Stocks as they should be traded'],
     ],
   },
   {
