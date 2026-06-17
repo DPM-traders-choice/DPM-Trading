@@ -93,20 +93,49 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col overflow-hidden bg-[#0B111E]"
       style={{ borderBottomLeftRadius: '5rem', borderBottomRightRadius: '5rem' }}
     >
-      {/* Background with Ken Burns drift */}
+      {/* Background chart image — centered, faded edges */}
       <div className={`hero-bg ${r} absolute inset-0 overflow-hidden`}>
-        <div className="hero-kenburns absolute inset-[-2%] w-[104%] h-[104%]">
-          <Image src="/bgnew.png" alt="Hero background" fill priority quality={100}
-            sizes="100vw"
-            className="object-cover object-right" style={{ opacity: 0.25 }} />
+        {/* Chart image: positioned right-center, moderate size */}
+        <div
+          className="absolute"
+          style={{
+            right: '-23%',
+            top: '44%',
+            transform: 'translateY(-50%)',
+            width: 'clamp(1100px, 120vw, 1800px)',
+            height: 'clamp(780px, 105vh, 1300px)',
+          }}
+        >
+          <Image
+            src="/homeBackground.png"
+            alt="Hero background"
+            fill
+            priority
+            quality={90}
+            sizes="55vw"
+            className="object-contain object-center"
+            style={{ opacity: 0.7 }}
+          />
+          {/* Radial vignette — fades all 4 edges, keeps center sharp */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `radial-gradient(ellipse 70% 65% at 50% 50%,
+                transparent 30%,
+                rgba(11,17,30,0.55) 60%,
+                rgba(11,17,30,0.92) 80%,
+                #0B111E 100%
+              )`,
+            }}
+          />
         </div>
       </div>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-[#0B111E]/55" />
-      <div className="absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-[#0B111E]/80 to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-[#0B111E]/80 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-20 bg-linear-to-b from-[#0B111E]/30 to-transparent" />
+      {/* Global dark overlay */}
+      <div className="absolute inset-0 bg-[#0B111E]/30" />
+      {/* Top fade */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-[#0B111E] to-transparent" />
+      {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-72 bg-linear-to-t from-[#0B111E] to-transparent" />
 
       {/* Content */}
