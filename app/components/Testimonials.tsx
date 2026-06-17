@@ -52,7 +52,6 @@ export default function Testimonials() {
   const outerRef = useRef<HTMLDivElement>(null)
   const stickyRef = useRef<HTMLElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
-  const progressLineRef = useRef<SVGLineElement>(null)
   const visibleRef = useRef(false)
   const reducedMotion = useRef(false)
 
@@ -82,7 +81,6 @@ export default function Testimonials() {
     const outer = outerRef.current
     const sticky = stickyRef.current
     const track = trackRef.current
-    const line = progressLineRef.current
     if (!outer || !sticky || !track) return
 
     let maxOffset = 0
@@ -113,7 +111,6 @@ export default function Testimonials() {
       const scrollable = outer.offsetHeight - sectionH
       const progress = Math.max(0, Math.min(1, scrolled / scrollable))
       track.style.transform = `translateX(${-progress * maxOffset}px)`
-      if (line) line.setAttribute('x2', `${progress * 100}%`)
     }
 
     const onScroll = () => {
@@ -149,35 +146,6 @@ export default function Testimonials() {
           transition: 'opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)',
         }}
       >
-        {/* Amber progress line — visual continuation of the scroll path */}
-        <svg
-          className="absolute top-0 left-0 w-full z-10"
-          height="3"
-          style={{ overflow: 'visible' }}
-          aria-hidden
-        >
-          <defs>
-            <filter id="testi-glow" x="-10%" y="-500%" width="120%" height="1100%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-          {/* Faint guide track */}
-          <line x1="0" y1="1.5" x2="100%" y2="1.5"
-            stroke="rgba(245,158,11,0.12)" strokeWidth="1.5" />
-          {/* Glowing amber fill line */}
-          <line
-            ref={progressLineRef}
-            x1="0" y1="1.5" x2="0%" y2="1.5"
-            stroke="#F59E0B"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            filter="url(#testi-glow)"
-          />
-        </svg>
 
         {/* Header */}
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 pt-10 pb-6 shrink-0">

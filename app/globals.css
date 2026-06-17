@@ -35,6 +35,23 @@ body {
   background-clip: text;
 }
 
+/* Steel-silver chrome heading — applied per GSAP split-char */
+.hero-chrome-text .split-char {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 55%,
+    #cdd4de 78%,
+    #8fa0b8 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  line-height: 1.2;
+}
+
 /* Marquee */
 @keyframes marquee {
   0%   { transform: translateX(0); }
@@ -42,7 +59,7 @@ body {
 }
 
 .marquee-track {
-  animation: marquee 35s linear infinite;
+  animation: marquee 80s linear infinite;
 }
 
 .marquee-track:hover {

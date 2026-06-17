@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Gift, Megaphone, BadgePercent, Users, Zap, ShieldCheck, BarChart2, UserPlus } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -35,6 +36,13 @@ function Divider() {
 }
 
 export default function AnnouncementBar() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
   const content = ANNOUNCEMENTS.flatMap((a, i) => [
     <AnnouncementItem key={i} {...a} />,
     <Divider key={`d${i}`} />,
@@ -42,19 +50,22 @@ export default function AnnouncementBar() {
 
   return (
     <div
-      className="fixed left-0 right-0 z-40 overflow-hidden"
+      className="fixed left-0 right-0 z-40 overflow-hidden transition-colors duration-300"
       style={{
         top: 'var(--header-height, 88px)',
         height: '34px',
-        background: '#07101f',
-        borderBottom: '1px solid rgba(255,255,255,0.07)',
+        background: scrolled ? '#07101f' : 'transparent',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, #07101f 40%, transparent)' }} />
-      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(270deg, #07101f 40%, transparent)' }} />
+      {scrolled && <>
+        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(90deg, #07101f 40%, transparent)' }} />
+        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(270deg, #07101f 40%, transparent)' }} />
+      </>}
 
       <div className="flex items-center h-full">
         <div className="marquee-track flex items-center">

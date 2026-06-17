@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono, Cormorant_Garamond, Raleway } from "next/font/google";
 import Header from "@/app/components/Header";
-import AnnouncementBar from "@/app/components/AnnouncementBar";
 import Footer from "@/app/components/Footer";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import ScrollReset from "@/app/components/ScrollReset";
@@ -75,7 +74,6 @@ export default function RootLayout({
         <SmoothScroll />
         <LoadingScreen />
         <Header />
-        <AnnouncementBar />
         {children}
         <Footer />
       </body>

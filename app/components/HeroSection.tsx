@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import StatCards from './StatCards'
 import SplitText from './SplitText'
 
@@ -10,6 +11,7 @@ const SLIDES = [
   {
     trust: 'Industry-Leading Trading Technology',
     headline: ['World Leading MT5', 'Trading Platform!'],
+    cta: 'Learn More',
     desc: 'MetaTrader 5 delivers lightning-fast execution, intuitive navigation, and advanced charting tools, making it ideal for traders of all experience levels.',
     features: [
       ['Available on WebTrader, iOS, Android and Desktop'],
@@ -19,6 +21,7 @@ const SLIDES = [
   {
     trust: 'Trusted by over 20 Million Traders',
     headline: ['Top Tier Brokerage', 'Conditions'],
+    cta: 'Register Now',
     desc: null,
     features: [
       ['Withdrawals in Minutes'],
@@ -29,6 +32,7 @@ const SLIDES = [
   {
     trust: 'Access 300+ Instruments Across 6 Asset Classes',
     headline: ['Multi Asset', 'Brokerage!'],
+    cta: 'Learn More',
     desc: 'Trade with confidence in a powerful environment featuring seamless execution, advanced tools, and flexible conditions built for every trader and spanning a wide selection of global markets below.',
     features: [
       ['Forex', 'Futures', 'Shares'],
@@ -38,6 +42,7 @@ const SLIDES = [
   {
     trust: 'Exclusive Offer for New Traders',
     headline: ['Start Your Trading Journey', 'With A Bonus From Us!'],
+    cta: 'Learn More',
     desc: null,
     features: [
       ['20% Welcome Bonus'],
@@ -47,15 +52,14 @@ const SLIDES = [
   },
 ]
 
-const INTERVAL = 7000
-const EXIT_MS  = 700
-const ENTER_MS = 1100
+const EXIT_MS = 700
 
 export default function HeroSection() {
-  const [ready, setReady]         = useState(false)
-  const [current, setCurrent]     = useState(0)
+  const [ready, setReady]           = useState(false)
+  const [current, setCurrent]       = useState(0)
   const [slideClass, setSlideClass] = useState('hero-slide-enter')
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const transitioning               = useRef(false)
+  const timerRef                    = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     let done = false
@@ -65,19 +69,21 @@ export default function HeroSection() {
     return () => { window.removeEventListener('hero:ready', trigger); clearTimeout(fallback) }
   }, [])
 
-  useEffect(() => {
-    if (!ready) return
-    const advance = () => {
-      // Exit
-      setSlideClass('hero-slide-exit')
-      timerRef.current = setTimeout(() => {
-        setCurrent(c => (c + 1) % SLIDES.length)
-        setSlideClass('hero-slide-enter')
-      }, EXIT_MS)
-    }
-    const id = setInterval(advance, INTERVAL)
-    return () => { clearInterval(id); if (timerRef.current) clearTimeout(timerRef.current) }
-  }, [ready])
+  const go = useCallback((dir: 'prev' | 'next') => {
+    if (transitioning.current) return
+    transitioning.current = true
+    setSlideClass('hero-slide-exit')
+    timerRef.current = setTimeout(() => {
+      setCurrent(c => dir === 'next'
+        ? (c + 1) % SLIDES.length
+        : (c - 1 + SLIDES.length) % SLIDES.length
+      )
+      setSlideClass('hero-slide-enter')
+      transitioning.current = false
+    }, EXIT_MS)
+  }, [])
+
+  useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current) }, [])
 
   const r     = ready ? 'is-ready' : ''
   const slide = SLIDES[current]
@@ -89,24 +95,25 @@ export default function HeroSection() {
     >
       {/* Background with Ken Burns drift */}
       <div className={`hero-bg ${r} absolute inset-0 overflow-hidden`}>
-        <div className="hero-kenburns absolute inset-[-6%] w-[112%] h-[112%]">
-          <Image src="/bgnew.png" alt="Hero background" fill priority quality={90}
-            className="object-cover object-right" style={{ opacity: 0.9 }} />
+        <div className="hero-kenburns absolute inset-[-2%] w-[104%] h-[104%]">
+          <Image src="/bgnew.png" alt="Hero background" fill priority quality={100}
+            sizes="100vw"
+            className="object-cover object-right" style={{ opacity: 0.25 }} />
         </div>
       </div>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-[#0B111E]/40" />
+      <div className="absolute inset-0 bg-[#0B111E]/55" />
       <div className="absolute inset-y-0 left-0 w-1/4 bg-linear-to-r from-[#0B111E]/80 to-transparent" />
       <div className="absolute inset-y-0 right-0 w-1/4 bg-linear-to-l from-[#0B111E]/80 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-64 bg-linear-to-b from-[#0B111E] via-[#0B111E]/70 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-20 bg-linear-to-b from-[#0B111E]/30 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-72 bg-linear-to-t from-[#0B111E] to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col flex-1">
-        <div className="shrink-0 pt-50" />
+        <div className="shrink-0 pt-36" />
 
-        <div className="flex-1 flex flex-col justify-center pt-6 pb-24">
+        <div className="flex-1 flex flex-col justify-center pt-4 pb-24">
           <div className="max-w-345 mx-auto w-full px-6 md:px-12">
 
             {/* Fixed-height stage — prevents layout shift between slides */}
@@ -121,7 +128,7 @@ export default function HeroSection() {
                 </p>
 
                 {/* Headline — SplitText per line */}
-                <h1 className="tracking-tight leading-[1.1] flex flex-col items-start">
+                <h1 className="hero-chrome-text tracking-tight leading-[1.2] flex flex-col items-start">
                   {slide.headline.map((line, li) => (
                     <SplitText
                       key={`${current}-${li}-${line}`}
@@ -141,10 +148,8 @@ export default function HeroSection() {
                         fontSize: 'clamp(2.8rem, 4.8vw, 4.4rem)',
                         fontFamily: 'var(--font-inter)',
                         fontWeight: 900,
-                        color: '#ffffff',
                         letterSpacing: '-0.03em',
-                        textShadow: '0 2px 40px rgba(255,255,255,0.12)',
-                        lineHeight: 1.1,
+                        lineHeight: 1.2,
                       }}
                     />
                   ))}
@@ -188,7 +193,7 @@ export default function HeroSection() {
                       boxShadow: '0 8px 32px rgba(212,168,67,0.55)',
                     }}
                   >
-                    Register Now
+                    {slide.cta}
                   </Link>
                   <span className="text-xs text-white/30 font-medium tracking-wide">*Limited-Time Offer</span>
                 </div>
@@ -196,6 +201,31 @@ export default function HeroSection() {
             </div>
 
           </div>
+        </div>
+
+        {/* Chevron navigation */}
+        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none z-20"
+          style={{ top: '50%', transform: 'translateY(-50%)', height: '0' }}>
+          <button
+            onClick={() => go('prev')}
+            aria-label="Previous slide"
+            className="pointer-events-auto ml-4 md:ml-8 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-200 cursor-pointer"
+            style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.13)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.07)')}
+          >
+            <ChevronLeft size={20} className="text-white/70" strokeWidth={2} />
+          </button>
+          <button
+            onClick={() => go('next')}
+            aria-label="Next slide"
+            className="pointer-events-auto mr-4 md:mr-8 flex items-center justify-center w-11 h-11 rounded-full transition-all duration-200 cursor-pointer"
+            style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.13)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.07)')}
+          >
+            <ChevronRight size={20} className="text-white/70" strokeWidth={2} />
+          </button>
         </div>
 
         {/* Stat Cards */}

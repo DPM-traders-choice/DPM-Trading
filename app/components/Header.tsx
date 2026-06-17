@@ -166,7 +166,7 @@ export default function Header() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-white shadow-[0_2px_24px_rgba(0,0,0,0.08)]'
-          : 'bg-[#0B111E] after:absolute after:inset-x-0 after:top-full after:h-16 after:bg-linear-to-b after:from-[#0B111E] after:to-transparent after:pointer-events-none'
+          : 'bg-transparent'
       }`}
     >
 
