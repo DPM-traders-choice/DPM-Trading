@@ -138,8 +138,9 @@ export default function CTABanner() {
             href="#"
             className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-all duration-300 hover:scale-[1.04] whitespace-nowrap"
             style={{
-              background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
-              boxShadow: '0 6px 20px rgba(37,99,235,0.45)',
+              background: 'linear-gradient(135deg, #D4A843 0%, #B8882A 100%)',
+              boxShadow: '0 6px 20px rgba(212,168,67,0.4)',
+              color: '#0B111E',
             }}
           >
             Sign Up Now <ArrowUpRight size={15} strokeWidth={2.5} />
