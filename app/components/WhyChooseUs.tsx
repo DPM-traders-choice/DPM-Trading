@@ -69,7 +69,7 @@ export default function WhyChooseUs() {
                 Our Story
               </p>
               <h2 className="bento-heading chrome-text text-3xl md:text-4xl font-black leading-[1.15] tracking-tight">
-                Why Choose<br />BBS Markets?
+                Why Choose<br />DPM?
               </h2>
               <p className="bento-body text-sm font-medium text-white/55 leading-relaxed">
                 A multicultural board of professionals approaching global clientele in a bespoke and local way.

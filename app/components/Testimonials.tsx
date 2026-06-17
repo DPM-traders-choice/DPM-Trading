@@ -6,25 +6,25 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const TESTIMONIALS = [
   {
-    text: 'Trading crypto on BBS Markets is seamless and secure. The platform is fast, easy to use, and supports smooth order execution even during high volatility. I feel confident managing my crypto trades here.',
+    text: 'Trading crypto on DPM is seamless and secure. The platform is fast, easy to use, and supports smooth order execution even during high volatility. I feel confident managing my crypto trades here.',
     name: 'Daniel R',
     role: 'Crypto Trader',
     avatar: 'https://i.pravatar.cc/80?img=11',
   },
   {
-    text: 'BBS Markets has completely changed the way I trade. Their platform is smooth, fast, and reliable, even during high-volatility market hours. Customer support is responsive and genuinely helpful, which gives me confidence as a trader.',
+    text: 'DPM has completely changed the way I trade. Their platform is smooth, fast, and reliable, even during high-volatility market hours. Customer support is responsive and genuinely helpful, which gives me confidence as a trader.',
     name: 'Rahul S',
     role: 'Active Trader',
     avatar: 'https://i.pravatar.cc/80?img=52',
   },
   {
-    text: 'The leverage options and tight spreads at BBS Markets give me a real edge. Withdrawals are instant and I never worry about my funds. Best brokerage I have used in five years of trading.',
+    text: 'The leverage options and tight spreads at DPM give me a real edge. Withdrawals are instant and I never worry about my funds. Best brokerage I have used in five years of trading.',
     name: 'Mei L',
     role: 'Forex Trader',
     avatar: 'https://i.pravatar.cc/80?img=47',
   },
   {
-    text: 'I switched to BBS Markets six months ago and have not looked back. The swap-free account and fast execution make it perfect for my trading style. Highly recommended for serious traders.',
+    text: 'I switched to DPM six months ago and have not looked back. The swap-free account and fast execution make it perfect for my trading style. Highly recommended for serious traders.',
     name: 'Ahmed K',
     role: 'Swing Trader',
     avatar: 'https://i.pravatar.cc/80?img=57',
@@ -111,7 +111,7 @@ export default function Testimonials() {
               Trusted By Traders<br />Globally
             </h2>
             <p className="text-sm md:text-base font-semibold text-slate-600 max-w-lg leading-relaxed">
-              Real experiences from clients who rely on BBS Markets for fast
+              Real experiences from clients who rely on DPM for fast
               execution, secure trading, and expert market insights.
             </p>
           </div>

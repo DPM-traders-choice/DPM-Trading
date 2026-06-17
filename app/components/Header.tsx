@@ -66,7 +66,7 @@ const NAV_ITEMS: NavItem[] = [
     align:  'right',
     columns: [
       [
-        { label: 'About BBS Markets', href: '#' },
+        { label: 'About DPM', href: '#' },
         { label: 'Contact Us',        href: '#' },
         { label: 'Complaints',        href: '#' },
       ],
@@ -84,7 +84,7 @@ function Logo({ scrolled }: { scrolled: boolean }) {
       {/* Gold logo — visible on dark background */}
       <Image
         src="/logoGold.png"
-        alt="BBS Markets"
+        alt="DPM"
         fill
         className="object-contain object-left transition-opacity duration-300"
         style={{ opacity: scrolled ? 0 : 1 }}
@@ -93,7 +93,7 @@ function Logo({ scrolled }: { scrolled: boolean }) {
       {/* White logo — visible on light background after scroll */}
       <Image
         src="/logo.png"
-        alt="BBS Markets"
+        alt="DPM"
         fill
         className="object-contain object-left transition-opacity duration-300"
         style={{ opacity: scrolled ? 1 : 0 }}

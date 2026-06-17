@@ -33,7 +33,7 @@ const NAV = [
   {
     heading: 'About Us',
     links: [
-      { label: 'About BBS Markets', href: '#' },
+      { label: 'About DPM', href: '#' },
       { label: 'Contact Us',        href: '#' },
       { label: 'Complaints',        href: '#' },
       { label: 'Legal Documents',   href: '#' },

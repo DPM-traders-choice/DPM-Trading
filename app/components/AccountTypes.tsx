@@ -146,7 +146,7 @@ export default function AccountTypes() {
             Account Types<br />We Offer
           </h2>
           <p className="text-slate-500 text-base font-medium max-w-md leading-relaxed">
-            BBS Markets Accounts Built to Match Every Trading Style.
+            DPM Accounts Built to Match Every Trading Style.
           </p>
         </div>
 

@@ -101,7 +101,7 @@ body {
   100% { transform: scale(1.12) translate(0%,    0%   ); }
 }
 .hero-kenburns {
-  animation: kenBurns 6s ease-in-out infinite;
+  animation: kenBurns 28s ease-in-out infinite;
   will-change: transform;
 }
 
