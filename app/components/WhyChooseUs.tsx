@@ -176,9 +176,7 @@ export default function WhyChooseUs() {
             transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--bento-delay, 0ms);
         }
         .wcu-card:hover {
-          box-shadow:
-            0 32px 80px rgba(0, 0, 0, 0.55),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
         }
 
         /* Glow intensifies on hover */

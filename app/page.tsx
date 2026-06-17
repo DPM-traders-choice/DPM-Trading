@@ -6,6 +6,7 @@ import PartnersSection from "@/app/components/PartnersSection"
 import Testimonials from "@/app/components/Testimonials"
 import CTABanner from "@/app/components/CTABanner"
 import ScrollPath from "@/app/components/ScrollPath"
+import TradingViewTicker from "@/app/components/TradingViewTicker"
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <ScrollPath />
         <HeroSection />
         <WhyChooseUs />
+        <TradingViewTicker />
         <AccountTypes />
         <WaveBar />
         <PartnersSection />
