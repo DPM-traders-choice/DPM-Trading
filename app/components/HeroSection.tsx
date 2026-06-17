@@ -107,7 +107,7 @@ export default function HeroSection() {
         <div className="shrink-0 pt-50" />
 
         <div className="flex-1 flex flex-col justify-center pt-6 pb-24">
-          <div className="max-w-360 mx-auto w-full px-6 md:px-10">
+          <div className="max-w-345 mx-auto w-full px-6 md:px-12">
 
             {/* Fixed-height stage — prevents layout shift between slides */}
             <div className="relative" style={{ height: 'clamp(480px, 56vh, 580px)' }}>

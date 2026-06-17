@@ -94,13 +94,14 @@ body {
 
 /* ── Ken Burns — subtle background drift ── */
 @keyframes kenBurns {
-  0%   { transform: scale(1.06) translate(0%,    0%   ); }
-  35%  { transform: scale(1.02) translate(-0.8%, 0.4% ); }
-  70%  { transform: scale(1.05) translate(0.5%,  -0.3%); }
-  100% { transform: scale(1.06) translate(0%,    0%   ); }
+  0%   { transform: scale(1.12) translate(0%,    0%   ); }
+  25%  { transform: scale(1.04) translate(-2.5%, 1.5% ); }
+  50%  { transform: scale(1.14) translate(2%,   -1.5%); }
+  75%  { transform: scale(1.06) translate(-1.5%, 2%  ); }
+  100% { transform: scale(1.12) translate(0%,    0%   ); }
 }
 .hero-kenburns {
-  animation: kenBurns 22s ease-in-out infinite;
+  animation: kenBurns 6s ease-in-out infinite;
   will-change: transform;
 }
 
