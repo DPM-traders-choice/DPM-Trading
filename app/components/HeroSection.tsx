@@ -102,8 +102,8 @@ export default function HeroSection() {
             right: '-23%',
             top: '44%',
             transform: 'translateY(-50%)',
-            width: 'clamp(1100px, 120vw, 1800px)',
-            height: 'clamp(780px, 105vh, 1300px)',
+            width: 'clamp(900px, 100vw, 1500px)',
+            height: 'clamp(640px, 88vh, 1100px)',
           }}
         >
           <Image
@@ -157,7 +157,7 @@ export default function HeroSection() {
                 </p>
 
                 {/* Headline — SplitText per line */}
-                <h1 className="hero-chrome-text tracking-tight leading-[1.2] flex flex-col items-start">
+                <h1 className="tracking-tight flex flex-col items-start">
                   {slide.headline.map((line, li) => (
                     <SplitText
                       key={`${current}-${li}-${line}`}
@@ -173,10 +173,9 @@ export default function HeroSection() {
                       rootMargin="0px"
                       textAlign="left"
                       startDelay={li * 0.15}
+                      className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-[5%] from-white to-[90%] to-gray-400 font-bold xl:font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
                       style={{
-                        fontSize: 'clamp(2.8rem, 4.8vw, 4.4rem)',
                         fontFamily: 'var(--font-inter)',
-                        fontWeight: 900,
                         letterSpacing: '-0.03em',
                         lineHeight: 1.2,
                       }}
@@ -186,7 +185,7 @@ export default function HeroSection() {
 
                 {/* Description (optional) */}
                 {slide.desc && (
-                  <p className="text-sm md:text-base text-white/60 leading-relaxed max-w-lg">
+                  <p className="text-gray-400 font-normal text-base md:text-lg lg:text-xl max-w-lg leading-relaxed">
                     {slide.desc}
                   </p>
                 )}

@@ -3,12 +3,13 @@
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ChevronDown, Menu, X } from 'lucide-react'
 
 const LANGUAGES = [
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'my', label: 'Myanmar', flag: '🇲🇲' },
-  { code: 'th', label: 'Thai',    flag: '🇹🇭' },
+  { code: 'en', label: 'English', flag: '/flags/english.png' },
+  { code: 'my', label: 'Myanmar', flag: '/flags/Flag_of_Myanmar.svg.png' },
+  { code: 'th', label: 'Thai',    flag: '/flags/thailand.svg' },
 ]
 
 type NavChild  = { label: string; href: string }
@@ -23,80 +24,69 @@ type NavItem   = {
 const NAV_ITEMS: NavItem[] = [
   {
     label:  'Trading',
-    href:   '#',
+    href:   '/trading',
     columns: [
       [
-        { label: 'Account Types',          href: '#' },
-        { label: 'Instruments',            href: '#' },
-        { label: 'Overnight Fees',         href: '#' },
-        { label: 'Deposits & Withdrawals', href: '#' },
+        { label: 'Account Types',          href: '/trading/account-types' },
+        { label: 'Instruments',            href: '/trading/instruments' },
+        { label: 'Overnight Fees',         href: '/trading/overnight-fees' },
+        { label: 'Deposits & Withdrawals', href: '/trading/deposits-withdrawals' },
       ],
       [
-        { label: 'Calendar',   href: '#' },
-        { label: 'Advantages', href: '#' },
-        { label: 'Platforms',  href: '#' },
+        { label: 'Calendar',   href: '/trading/calendar' },
+        { label: 'Advantages', href: '/trading/advantages' },
+        { label: 'Platforms',  href: '/trading/platforms' },
       ],
     ],
   },
   {
     label:  'Promotions',
-    href:   '#',
+    href:   '/promotions',
     columns: [
-      [{ label: 'Welcome Bonus', href: '#' }],
+      [{ label: 'Welcome Bonus', href: '/promotions/welcome-bonus' }],
     ],
   },
   {
     label:   'Copy Trading',
-    href:    '#',
+    href:    '/copy-trading',
     columns: null,
   },
   {
     label:  'Partners',
-    href:   '#',
+    href:   '/partners',
     columns: [
       [
-        { label: 'Partner',           href: '#' },
-        { label: 'Create Your Bonus', href: '#' },
+        { label: 'Partner',           href: '/partners/partner' },
+        { label: 'Create Your Bonus', href: '/partners/create-your-bonus' },
       ],
     ],
   },
   {
     label:  'About Us',
-    href:   '#',
+    href:   '/about-us',
     align:  'right',
     columns: [
       [
-        { label: 'About DPM', href: '#' },
-        { label: 'Contact Us',        href: '#' },
-        { label: 'Complaints',        href: '#' },
+        { label: 'About DPM',       href: '/about-us/about-dpm' },
+        { label: 'Contact Us',      href: '/about-us/contact-us' },
+        { label: 'Complaints',      href: '/about-us/complaints' },
       ],
       [
-        { label: 'Legal Documents', href: '#' },
-        { label: 'FAQs',            href: '#' },
+        { label: 'Legal Documents', href: '/about-us/legal-documents' },
+        { label: 'FAQs',            href: '/about-us/faqs' },
       ],
     ],
   },
 ]
 
-function Logo({ scrolled }: { scrolled: boolean }) {
+function Logo() {
   return (
-    <div className="relative h-16 w-52">
-      {/* Gold logo — visible on dark background */}
+    <div className="relative h-14 w-44">
       <Image
         src="/logoGold.png"
         alt="DPM"
         fill
-        className="object-contain object-left transition-opacity duration-300"
-        style={{ opacity: scrolled ? 0 : 1 }}
-        priority
-      />
-      {/* White logo — visible on light background after scroll */}
-      <Image
-        src="/logo.png"
-        alt="DPM"
-        fill
-        className="object-contain object-left transition-opacity duration-300"
-        style={{ opacity: scrolled ? 1 : 0 }}
+        className="object-contain object-left"
         priority
       />
     </div>
@@ -104,6 +94,7 @@ function Logo({ scrolled }: { scrolled: boolean }) {
 }
 
 export default function Header() {
+  const pathname = usePathname()
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen]         = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
@@ -154,20 +145,19 @@ export default function Header() {
     window.location.href = `https://translate.google.com/translate?sl=auto&tl=${lang.code}&u=${url}`
   }
 
-  const navTextClass = scrolled
-    ? 'text-[#1a1a2e] hover:text-[#1a1a2e]/60'
-    : 'text-white hover:text-white/70'
+  const isNavActive = (href: string) =>
+    href !== '/' && pathname.startsWith(href)
 
-  const navActiveClass = scrolled ? 'text-[#1a1a2e]' : 'text-white'
-  const underlineBg    = scrolled ? 'bg-[#1a1a2e]'   : 'bg-white'
+  const navTextClass   = 'text-white/75 hover:text-white'
+  const navActiveClass = 'text-white'
+  const underlineBg    = 'bg-[#D4A843]'
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white shadow-[0_2px_24px_rgba(0,0,0,0.08)]'
-          : 'bg-transparent'
+        scrolled ? 'shadow-[0_2px_28px_rgba(0,0,0,0.35)]' : ''
       }`}
+      style={{ background: pathname === '/' ? '#0B111E' : '#101829' }}
     >
 
       {/* ── Main navigation bar ── */}
@@ -176,12 +166,13 @@ export default function Header() {
         {/* ── Left: Logo + Nav ── */}
         <div className="flex items-center gap-6">
           <Link href="/" className="shrink-0 outline-none">
-            <Logo scrolled={scrolled} />
+            <Logo />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-0.5">
             {NAV_ITEMS.map((item) => {
-              const isOpen = activeDropdown === item.label
+              const isOpen   = activeDropdown === item.label
+              const isActive = isNavActive(item.href)
               return (
                 <div
                   key={item.label}
@@ -192,7 +183,7 @@ export default function Header() {
                   <Link
                     href={item.href}
                     className={`relative flex items-center gap-1.5 px-3.5 py-2 text-base font-semibold tracking-wide rounded-md transition-all duration-200 select-none ${
-                      isOpen ? navActiveClass : navTextClass
+                      isOpen || isActive ? navActiveClass : navTextClass
                     }`}
                   >
                     {item.label}
@@ -203,9 +194,10 @@ export default function Header() {
                         className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                       />
                     )}
+                    {/* Active / hover underline */}
                     <span
                       className={`absolute bottom-0 left-3.5 right-3.5 h-0.5 rounded-full transition-all duration-200 ${underlineBg} ${
-                        isOpen ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                        isActive || isOpen ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
                       }`}
                     />
                   </Link>
@@ -247,8 +239,40 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* ── Right: Login ── */}
-        <div className="hidden lg:flex items-center">
+        {/* ── Right: Language + Login ── */}
+        <div className="hidden lg:flex items-center gap-4">
+
+          {/* Language dropdown */}
+          <div ref={langRef} className="relative">
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-1.5 text-sm font-semibold text-white/80 hover:text-white transition-colors duration-150"
+            >
+              <span className="w-4.5 h-4.5 rounded-full overflow-hidden shrink-0 block"><Image src={selectedLang.flag} alt={selectedLang.label} width={18} height={18} className="w-full h-full object-cover" /></span>
+              <span>{selectedLang.label}</span>
+              <ChevronDown size={12} strokeWidth={2.5} className={`transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {langOpen && (
+              <div className="absolute right-0 top-[calc(100%+8px)] bg-white rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.14)] overflow-hidden min-w-36 py-1.5 z-50">
+                {LANGUAGES.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleLanguageSelect(lang)}
+                    className={`w-full flex items-center gap-2 px-4 py-2.5 text-sm font-semibold transition-colors duration-100 ${
+                      selectedLang.code === lang.code
+                        ? 'text-[#D4A843] bg-[#D4A843]/8'
+                        : 'text-[#2d3748] hover:bg-gray-50'
+                    }`}
+                  >
+                    <span className="w-4.5 h-4.5 rounded-full overflow-hidden shrink-0 block"><Image src={lang.flag} alt={lang.label} width={18} height={18} className="w-full h-full object-cover" /></span>
+                    <span>{lang.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <Link
             href="#"
             className="px-6 py-2.5 text-sm font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-85"
@@ -264,9 +288,7 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className={`lg:hidden flex items-center justify-center w-10 h-10 shrink-0 transition-colors duration-300 ${
-            scrolled ? 'text-[#0c1422]' : 'text-white'
-          }`}
+          className="lg:hidden flex items-center justify-center w-10 h-10 shrink-0 text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation"
         >
@@ -276,25 +298,30 @@ export default function Header() {
 
       {/* ── Mobile menu ── */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          scrolled ? 'bg-white' : 'bg-[#0B111E]'
-        } ${mobileOpen ? 'max-h-[90vh] opacity-100' : 'max-h-0 opacity-0'}`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out bg-[#101829] ${
+          mobileOpen ? 'max-h-[90vh] opacity-100' : 'max-h-0 opacity-0'
+        }`}
       >
         <div className="max-w-345 mx-auto px-6 py-3 flex flex-col">
           {NAV_ITEMS.map((item, idx) => {
-            const flatItems = item.columns?.flat() ?? []
-            const textClass = scrolled ? 'text-[#1a1a2e]' : 'text-white'
-            const subTextClass = scrolled ? 'text-[#1a1a2e]/60' : 'text-white/70'
-            const dividerClass = scrolled ? 'border-gray-100' : 'border-white/5'
+            const flatItems    = item.columns?.flat() ?? []
+            const isActive     = isNavActive(item.href)
+            const textClass    = 'text-white'
+            const dividerClass = 'border-white/5'
             return (
               <div key={item.label} className={idx !== 0 ? `border-t ${dividerClass}` : ''}>
                 {item.columns ? (
                   <>
                     <button
-                      className={`w-full flex items-center justify-between py-3.5 text-base font-semibold transition-colors duration-200 ${textClass}`}
+                      className={`w-full flex items-center justify-between py-3.5 text-base font-semibold transition-colors duration-200 ${
+                        isActive ? 'text-[#D4A843]' : textClass
+                      }`}
                       onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
                     >
-                      {item.label}
+                      <span className="flex items-center gap-2">
+                        {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843] shrink-0" />}
+                        {item.label}
+                      </span>
                       <ChevronDown
                         size={15}
                         strokeWidth={2.5}
@@ -306,24 +333,34 @@ export default function Header() {
                         mobileExpanded === item.label ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                       }`}
                     >
-                      <div className={`pl-4 pb-3 border-l ml-2 flex flex-col gap-0.5 ${scrolled ? 'border-gray-200' : 'border-white/8'}`}>
-                        {flatItems.map((child) => (
-                          <Link
-                            key={child.label}
-                            href={child.href}
-                            className={`py-2 text-base transition-colors duration-150 ${subTextClass} hover:${textClass}`}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                      <div className="pl-4 pb-3 border-l border-white/8 ml-2 flex flex-col gap-0.5">
+                        {flatItems.map((child) => {
+                          const childActive = pathname === child.href
+                          return (
+                            <Link
+                              key={child.label}
+                              href={child.href}
+                              className={`py-2 text-base transition-colors duration-150 font-medium ${
+                                childActive
+                                  ? 'text-[#D4A843]'
+                                  : 'text-white/70'
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          )
+                        })}
                       </div>
                     </div>
                   </>
                 ) : (
                   <Link
                     href={item.href}
-                    className={`flex items-center py-3.5 text-base font-semibold transition-colors duration-200 ${textClass}`}
+                    className={`flex items-center gap-2 py-3.5 text-base font-semibold transition-colors duration-200 ${
+                      isActive ? 'text-[#D4A843]' : textClass
+                    }`}
                   >
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843] shrink-0" />}
                     {item.label}
                   </Link>
                 )}
@@ -332,18 +369,18 @@ export default function Header() {
           })}
 
           {/* Mobile language selector */}
-          <div className={`border-t pt-3 pb-1 flex gap-2 ${scrolled ? 'border-gray-100' : 'border-white/5'}`}>
+          <div className="border-t border-white/5 pt-3 pb-1 flex gap-2">
             {LANGUAGES.map((lang) => (
               <button
                 key={lang.code}
                 onClick={() => handleLanguageSelect(lang)}
                 className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold transition-colors duration-150 ${
                   selectedLang.code === lang.code
-                    ? scrolled ? 'bg-gray-100 text-[#0c1422]' : 'bg-white/10 text-white'
-                    : scrolled ? 'text-[#1a1a2e]/50 hover:text-[#0c1422]' : 'text-white/50 hover:text-white'
+                    ? 'bg-white/10 text-white'
+                    : 'text-white/50 hover:text-white'
                 }`}
               >
-                <span>{lang.flag}</span>
+                <span className="w-4.5 h-4.5 rounded-full overflow-hidden shrink-0 block"><Image src={lang.flag} alt={lang.label} width={18} height={18} className="w-full h-full object-cover" /></span>
                 <span>{lang.label}</span>
               </button>
             ))}

@@ -49,12 +49,13 @@ export default function PartnersSection() {
               <p className="text-sm font-semibold tracking-[0.18em] uppercase" style={{ color: '#D4A843' }}>
                 Partnership Program
               </p>
-              <h2 className="font-black leading-[1.08] tracking-tight"
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight"
                   style={{
-                    fontSize: 'clamp(2rem, 3.5vw, 3rem)',
                     fontFamily: 'var(--font-inter)',
-                    color: '#0c1422',
-                    letterSpacing: '-0.03em',
+                    background: 'linear-gradient(160deg, #020202 0%, #080808 15%, #0f0f0f 28%, #1c1c1c 42%, #3a3a3a 52%, #111111 64%, #050505 78%, #080808 90%, #020202 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
                   }}>
                 Partner With A Flexible<br />
                 Bespoke Partner.{' '}

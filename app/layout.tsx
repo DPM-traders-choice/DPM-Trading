@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono, Cormorant_Garamond, Raleway } from "next/font/google";
 import Header from "@/app/components/Header";
+import CTABanner from "@/app/components/CTABanner";
 import Footer from "@/app/components/Footer";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import ScrollReset from "@/app/components/ScrollReset";
-import SmoothScroll from "@/app/components/SmoothScroll";
 import "./globals.css";
 
 const inter = Inter({
@@ -71,10 +71,14 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#0B111E] text-white overflow-x-hidden">
         <ScrollReset />
-        <SmoothScroll />
         <LoadingScreen />
         <Header />
-        {children}
+        <div className="flex-1 flex flex-col">
+          {children}
+        </div>
+        <div className="bg-white">
+          <CTABanner />
+        </div>
         <Footer />
       </body>
     </html>

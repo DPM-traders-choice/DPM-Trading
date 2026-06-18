@@ -38,11 +38,11 @@ export default function WhyChooseUs() {
   return (
     <section ref={sectionRef} className="bg-white pt-24 md:pt-32 pb-14 md:pb-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
           {/* Card 1 — Trophy */}
           <div
-            className="wcu-card bento-card from-left relative rounded-3xl overflow-hidden p-10 flex flex-col justify-between min-h-100"
+            className="wcu-card bento-card from-left relative rounded-4xl overflow-hidden p-10 flex flex-col justify-between min-h-80"
             style={{ backgroundImage: 'linear-gradient(135deg, #0a1628 0%, #0f2050 100%)' }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
 
             <div className="relative flex flex-col gap-5 max-w-[55%]">
               <p className="bento-label text-xs font-semibold tracking-widest text-blue-400 uppercase">Our Story</p>
-              <h2 className="bento-heading chrome-text text-3xl md:text-4xl font-black leading-[1.15] tracking-tight">
+              <h2 className="bento-heading inline-block bg-clip-text text-transparent bg-linear-to-b from-5% from-white to-90% to-gray-400 font-bold text-3xl xl:text-4xl leading-[1.15] tracking-tight">
                 Why Choose<br />DPM?
               </h2>
               <p className="bento-body text-sm font-medium text-white/55 leading-relaxed">
@@ -78,7 +78,7 @@ export default function WhyChooseUs() {
 
           {/* Card 2 — Philosophy */}
           <div
-            className="wcu-card bento-card from-right relative rounded-3xl overflow-hidden p-10 flex flex-col justify-between min-h-100"
+            className="wcu-card bento-card from-right relative rounded-4xl overflow-hidden p-10 flex flex-col justify-between min-h-80"
             style={{ backgroundImage: 'linear-gradient(135deg, #0f2050 0%, #0a1628 100%)' }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
@@ -94,7 +94,7 @@ export default function WhyChooseUs() {
 
             <div className="relative flex flex-col gap-5 max-w-[60%]">
               <p className="bento-label text-xs font-semibold tracking-widest text-blue-400 uppercase">Our Philosophy</p>
-              <h2 className="bento-heading chrome-text text-3xl md:text-4xl font-black leading-[1.15] tracking-tight">
+              <h2 className="bento-heading inline-block bg-clip-text text-transparent bg-linear-to-b from-5% from-white to-90% to-gray-400 font-bold text-3xl xl:text-4xl leading-[1.15] tracking-tight">
                 Clients First,<br />Always.
               </h2>
               <p className="bento-body text-sm font-medium text-white/55 leading-relaxed">
@@ -114,7 +114,7 @@ export default function WhyChooseUs() {
 
           {/* Card 3 — Partner */}
           <div
-            className="wcu-card bento-card from-bottom md:col-span-2 relative rounded-3xl p-10 flex flex-col md:flex-row gap-10 min-h-70"
+            className="wcu-card bento-card from-bottom md:col-span-2 relative rounded-4xl p-10 flex flex-col md:flex-row gap-10 min-h-70"
             style={{ backgroundImage: 'linear-gradient(135deg, #0a1628 0%, #0f2050 60%, #0a1628 100%)' }}
           >
             <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
@@ -132,7 +132,7 @@ export default function WhyChooseUs() {
             <div className="relative flex flex-col justify-between gap-6 md:w-2/5 shrink-0">
               <div className="flex flex-col gap-3">
                 <p className="bento-label text-xs font-semibold tracking-widest text-blue-400 uppercase">Partnership</p>
-                <h2 className="bento-heading chrome-text text-3xl md:text-4xl font-black leading-[1.15] tracking-tight">
+                <h2 className="bento-heading inline-block bg-clip-text text-transparent bg-linear-to-b from-5% from-white to-90% to-gray-400 font-bold text-3xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight" style={{ fontFamily: 'var(--font-inter)' }}>
                   Become a Partner<br />Today
                 </h2>
                 <p className="bento-body text-sm font-medium text-white/55 leading-relaxed">

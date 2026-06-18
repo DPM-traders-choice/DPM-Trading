@@ -150,9 +150,10 @@ export default function Testimonials() {
         {/* Header */}
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 pt-10 pb-6 shrink-0">
           <h2
-            className="text-4xl md:text-5xl font-black leading-[1.15] tracking-tight mb-4"
+            className="text-4xl md:text-5xl font-bold leading-[1.15] tracking-tight mb-4"
             style={{
-              background: 'linear-gradient(180deg, #0f172a 0%, #334155 35%, #64748b 55%, #334155 75%, #0f172a 100%)',
+              fontFamily: 'var(--font-inter)',
+              background: 'linear-gradient(160deg, #020202 0%, #080808 15%, #0f0f0f 28%, #1c1c1c 42%, #3a3a3a 52%, #111111 64%, #050505 78%, #080808 90%, #020202 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -183,7 +184,7 @@ export default function Testimonials() {
                 }}
               >
                 {/* Quote text */}
-                <p className="text-slate-500 text-lg md:text-xl leading-relaxed">
+                <p className="text-slate-500 font-normal text-base md:text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'var(--font-inter)' }}>
                   {t.text}
                 </p>
 
@@ -212,12 +213,6 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Scroll hint — fades out once progress starts */}
-        <div className="shrink-0 flex justify-center pb-6">
-          <p className="text-xs text-slate-300 tracking-widest uppercase select-none">
-            scroll to explore
-          </p>
-        </div>
       </section>
     </div>
   )

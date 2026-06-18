@@ -32,7 +32,7 @@ export default function CTABanner() {
       style={{ marginBottom: '-120px' }}
     >
       <div
-        className="cta-card relative rounded-2xl overflow-hidden px-8 md:px-12 py-8 flex flex-col md:flex-row items-center gap-8"
+        className="cta-card relative rounded-2xl overflow-hidden px-8 md:px-12 py-10 flex flex-col md:flex-row items-center md:items-center gap-8"
         style={{
           minHeight: '240px',
           background: 'linear-gradient(135deg, #0a1628 0%, #0f2050 60%, #0a1628 100%)',
@@ -107,7 +107,7 @@ export default function CTABanner() {
 
         {/* Text */}
         <div
-          className="cta-item relative flex flex-col gap-3 flex-1"
+          className="cta-item relative flex flex-col gap-3 flex-1 items-center text-center md:items-start md:text-left"
           style={{ '--cta-delay': '220ms' } as React.CSSProperties}
         >
           <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-blue-400">
@@ -131,7 +131,7 @@ export default function CTABanner() {
 
         {/* CTA button */}
         <div
-          className="cta-item relative shrink-0"
+          className="cta-item relative shrink-0 flex justify-center md:block"
           style={{ '--cta-delay': '360ms' } as React.CSSProperties}
         >
           <Link

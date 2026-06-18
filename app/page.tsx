@@ -4,13 +4,13 @@ import AccountTypes from "@/app/components/AccountTypes"
 import WaveBar from "@/app/components/WaveBar"
 import PartnersSection from "@/app/components/PartnersSection"
 import Testimonials from "@/app/components/Testimonials"
-import CTABanner from "@/app/components/CTABanner"
 import ScrollPath from "@/app/components/ScrollPath"
 import TradingViewTicker from "@/app/components/TradingViewTicker"
+import PaymentsMarquee from "@/app/components/PaymentsMarquee"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="bg-white">
       {/* Relative wrapper so ScrollPath can span hero → partners */}
       <div className="relative">
         <ScrollPath />
@@ -20,9 +20,9 @@ export default function Home() {
         <AccountTypes />
         <WaveBar />
         <PartnersSection />
+        <PaymentsMarquee />
       </div>
       <Testimonials />
-      <CTABanner />
     </main>
   )
 }

@@ -7,37 +7,37 @@ const NAV = [
   {
     heading: 'Trading',
     links: [
-      { label: 'Account Types',          href: '#' },
-      { label: 'Instruments',            href: '#' },
-      { label: 'Overnight Fees',         href: '#' },
-      { label: 'Deposits & Withdrawals', href: '#' },
-      { label: 'Calendar',               href: '#' },
-      { label: 'Advantages',             href: '#' },
-      { label: 'Platforms',              href: '#' },
+      { label: 'Account Types',          href: '/trading/account-types' },
+      { label: 'Instruments',            href: '/trading/instruments' },
+      { label: 'Overnight Fees',         href: '/trading/overnight-fees' },
+      { label: 'Deposits & Withdrawals', href: '/trading/deposits-withdrawals' },
+      { label: 'Calendar',               href: '/trading/calendar' },
+      { label: 'Advantages',             href: '/trading/advantages' },
+      { label: 'Platforms',              href: '/trading/platforms' },
     ],
   },
   {
     heading: 'Promotions',
     links: [
-      { label: 'Welcome Bonus',  href: '#' },
-      { label: 'Copy Trading',   href: '#' },
+      { label: 'Welcome Bonus', href: '/promotions/welcome-bonus' },
+      { label: 'Copy Trading',  href: '/copy-trading' },
     ],
   },
   {
     heading: 'Partners',
     links: [
-      { label: 'Partner',           href: '#' },
-      { label: 'Create Your Bonus', href: '#' },
+      { label: 'Partner',           href: '/partners/partner' },
+      { label: 'Create Your Bonus', href: '/partners/create-your-bonus' },
     ],
   },
   {
     heading: 'About Us',
     links: [
-      { label: 'About DPM', href: '#' },
-      { label: 'Contact Us',        href: '#' },
-      { label: 'Complaints',        href: '#' },
-      { label: 'Legal Documents',   href: '#' },
-      { label: 'FAQs',              href: '#' },
+      { label: 'About DPM',       href: '/about-us/about-dpm' },
+      { label: 'Contact Us',      href: '/about-us/contact-us' },
+      { label: 'Complaints',      href: '/about-us/complaints' },
+      { label: 'Legal Documents', href: '/about-us/legal-documents' },
+      { label: 'FAQs',            href: '/about-us/faqs' },
     ],
   },
 ]

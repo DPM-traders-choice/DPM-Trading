@@ -135,9 +135,10 @@ export default function AccountTypes() {
         {/* Header */}
         <div className="mb-12">
           <h2
-            className="text-4xl md:text-5xl font-black leading-[1.15] tracking-tight mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight mb-4"
             style={{
-              background: 'linear-gradient(180deg, #0f172a 0%, #334155 35%, #64748b 55%, #334155 75%, #0f172a 100%)',
+              fontFamily: 'var(--font-inter)',
+              background: 'linear-gradient(160deg, #050505 0%, #0f0f0f 15%, #1a1a1a 28%, #4a4a4a 40%, #858585 50%, #2a2a2a 62%, #0a0a0a 75%, #111111 88%, #060606 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -211,7 +212,7 @@ export default function AccountTypes() {
                       </span>
                     </div>
 
-                    <h3 className="chrome-text text-xl md:text-2xl font-black tracking-tight leading-tight"
+                    <h3 className="inline-block bg-clip-text text-transparent bg-linear-to-b from-5% from-white to-90% to-gray-400 font-bold text-xl md:text-2xl leading-[1.15] tracking-tight"
                       style={{ opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 320}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 320}ms` }}>
                       {acc.label}
                     </h3>
