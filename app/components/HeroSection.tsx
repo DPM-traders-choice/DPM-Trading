@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import StatCards from './StatCards'
-import SplitText from './SplitText'
 
 const SLIDES = [
   {
@@ -157,29 +156,26 @@ export default function HeroSection() {
                 </p>
 
                 {/* Headline — SplitText per line */}
-                <h1 className="tracking-tight flex flex-col items-start">
+                <h1
+                  className="tracking-tight flex flex-col items-start font-bold xl:font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+                  style={{ fontFamily: 'var(--font-inter)', letterSpacing: '-0.03em', lineHeight: 1.2 }}
+                >
                   {slide.headline.map((line, li) => (
-                    <SplitText
-                      key={`${current}-${li}-${line}`}
-                      text={line}
-                      tag="span"
-                      splitType="chars"
-                      delay={22}
-                      duration={0.85}
-                      ease="power3.out"
-                      from={{ opacity: 0, y: 36 }}
-                      to={{ opacity: 1, y: 0 }}
-                      threshold={0}
-                      rootMargin="0px"
-                      textAlign="left"
-                      startDelay={li * 0.15}
-                      className="inline-block bg-clip-text text-transparent bg-gradient-to-b from-[5%] from-white to-[90%] to-gray-400 font-bold xl:font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+                    <span
+                      key={`${current}-${li}`}
+                      className="inline-block"
                       style={{
-                        fontFamily: 'var(--font-inter)',
-                        letterSpacing: '-0.03em',
-                        lineHeight: 1.2,
+                        background: 'linear-gradient(180deg, #ffffff 5%, #9ca3af 90%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        opacity: 0,
+                        transform: 'translateY(36px)',
+                        animation: `heroLineIn 0.85s cubic-bezier(0.22,1,0.36,1) ${li * 150 + 100}ms forwards`,
                       }}
-                    />
+                    >
+                      {line}
+                    </span>
                   ))}
                 </h1>
 
@@ -262,6 +258,19 @@ export default function HeroSection() {
           <StatCards />
         </div>
       </div>
+
+      <style>{`
+        @keyframes heroLineIn {
+          from { opacity: 0; transform: translateY(36px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          @keyframes heroLineIn {
+            from { opacity: 1; transform: none; }
+            to   { opacity: 1; transform: none; }
+          }
+        }
+      `}</style>
     </section>
   )
 }
