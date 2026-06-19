@@ -65,7 +65,7 @@ export default function HeroSection() {
     let done = false
     const trigger = () => { if (!done) { done = true; setReady(true) } }
     window.addEventListener('hero:ready', trigger)
-    const fallback = setTimeout(trigger, 2700)
+    const fallback = setTimeout(trigger, 100)
     return () => { window.removeEventListener('hero:ready', trigger); clearTimeout(fallback) }
   }, [])
 

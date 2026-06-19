@@ -29,6 +29,14 @@ export default function LoadingScreen() {
   const [gone, setGone]         = useState(false)
 
   useEffect(() => {
+    // Skip animation on subsequent visits within the same session
+    if (sessionStorage.getItem('intro-shown')) {
+      window.dispatchEvent(new CustomEvent('hero:ready'))
+      setGone(true)
+      return
+    }
+    sessionStorage.setItem('intro-shown', '1')
+
     const timers: ReturnType<typeof setTimeout>[] = []
 
     // Reveal candles one by one

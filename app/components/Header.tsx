@@ -24,7 +24,7 @@ type NavItem   = {
 const NAV_ITEMS: NavItem[] = [
   {
     label:  'Trading',
-    href:   '/trading',
+    href:   '#',
     columns: [
       [
         { label: 'Account Types',          href: '/trading/account-types' },
@@ -35,7 +35,6 @@ const NAV_ITEMS: NavItem[] = [
       [
         { label: 'Calendar',   href: '/trading/calendar' },
         { label: 'Advantages', href: '/trading/advantages' },
-        { label: 'Platforms',  href: '/trading/platforms' },
       ],
     ],
   },
@@ -79,19 +78,6 @@ const NAV_ITEMS: NavItem[] = [
   },
 ]
 
-function Logo() {
-  return (
-    <div className="relative h-14 w-44">
-      <Image
-        src="/logoGold.png"
-        alt="DPM"
-        fill
-        className="object-contain object-left"
-        priority
-      />
-    </div>
-  )
-}
 
 export default function Header() {
   const pathname = usePathname()
@@ -138,26 +124,49 @@ export default function Header() {
     setSelectedLang(lang)
     setLangOpen(false)
     if (lang.code === 'en') {
+      // eslint-disable-next-line react-hooks/immutability
       window.location.href = window.location.origin + window.location.pathname
       return
     }
     const url = encodeURIComponent(window.location.href)
+    // eslint-disable-next-line react-hooks/immutability
     window.location.href = `https://translate.google.com/translate?sl=auto&tl=${lang.code}&u=${url}`
   }
 
   const isNavActive = (href: string) =>
     href !== '/' && pathname.startsWith(href)
 
-  const navTextClass   = 'text-white/75 hover:text-white'
-  const navActiveClass = 'text-white'
+  const LIGHT_PAGES = [
+    '/trading/advantages',
+    '/trading/overnight-fees',
+    '/trading/deposits-withdrawals',
+    '/trading/instruments',
+    '/trading/calendar',
+    '/promotions/welcome-bonus',
+  ]
+  const isLight = LIGHT_PAGES.some(p => pathname === p || pathname.startsWith(p + '/'))
+  const isWhite = isLight || (pathname === '/' && scrolled)
+
+  const navTextClass   = isWhite ? 'text-[#101829]/70 hover:text-[#101829]' : 'text-white/75 hover:text-white'
+  const navActiveClass = isWhite ? 'text-[#101829]' : 'text-white'
   const underlineBg    = 'bg-[#D4A843]'
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'shadow-[0_2px_28px_rgba(0,0,0,0.35)]' : ''
+        scrolled
+          ? isWhite
+            ? 'shadow-[0_2px_28px_rgba(0,0,0,0.08)]'
+            : 'shadow-[0_2px_28px_rgba(0,0,0,0.35)]'
+          : ''
       }`}
-      style={{ background: pathname === '/' ? '#0B111E' : '#101829' }}
+      style={{
+        background: isWhite
+          ? '#ffffff'
+          : pathname === '/'
+            ? '#0B111E'
+            : '#101829',
+      }}
     >
 
       {/* ── Main navigation bar ── */}
@@ -166,7 +175,15 @@ export default function Header() {
         {/* ── Left: Logo + Nav ── */}
         <div className="flex items-center gap-6">
           <Link href="/" className="shrink-0 outline-none">
-            <Logo />
+            <div className="relative h-14 w-44">
+              <Image
+                src={isWhite ? '/logo.png' : '/logoGold.png'}
+                alt="DPM"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-0.5">
@@ -246,7 +263,7 @@ export default function Header() {
           <div ref={langRef} className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1.5 text-sm font-semibold text-white/80 hover:text-white transition-colors duration-150"
+              className={`flex items-center gap-1.5 text-sm font-semibold transition-colors duration-150 ${isWhite ? 'text-[#101829]/70 hover:text-[#101829]' : 'text-white/80 hover:text-white'}`}
             >
               <span className="w-4.5 h-4.5 rounded-full overflow-hidden shrink-0 block"><Image src={selectedLang.flag} alt={selectedLang.label} width={18} height={18} className="w-full h-full object-cover" /></span>
               <span>{selectedLang.label}</span>
@@ -288,7 +305,7 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="lg:hidden flex items-center justify-center w-10 h-10 shrink-0 text-white"
+          className={`lg:hidden flex items-center justify-center w-10 h-10 shrink-0 ${isWhite ? 'text-[#101829]' : 'text-white'}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation"
         >
