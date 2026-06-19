@@ -144,8 +144,9 @@ export default function Header() {
     '/trading/calendar',
     '/promotions/welcome-bonus',
   ]
+  const SCROLL_WHITE_PAGES = ['/trading/account-types']
   const isLight = LIGHT_PAGES.some(p => pathname === p || pathname.startsWith(p + '/'))
-  const isWhite = isLight || (pathname === '/' && scrolled)
+  const isWhite = isLight || (pathname === '/' && scrolled) || (SCROLL_WHITE_PAGES.some(p => pathname === p || pathname.startsWith(p + '/')) && scrolled)
 
   const navTextClass   = isWhite ? 'text-[#101829]/70 hover:text-[#101829]' : 'text-white/75 hover:text-white'
   const navActiveClass = isWhite ? 'text-[#101829]' : 'text-white'

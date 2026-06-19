@@ -10,7 +10,7 @@ const CARDS = [
   { icon: '/advantages/stock-market.svg', title: 'Market Execution', body: 'Every order is filled! Get real Market Execution deriving from Tier 1 Liquidity.' },
   { icon: '/advantages/languages.svg', title: 'Multilingual Support', body: 'BBs Markets support in over 15 languages!' },
   { icon: '/advantages/cryptocurrency.svg', title: '300+ Instruments', body: 'Choose from Forex, Commodities, Indices, Futures, Metals and more.' },
-  { icon: '/advantages/medal.svg', title: 'MT5 Trading platform', body: 'At BBS Markets we provide the World Leading MT5 trading platform.' },
+  { icon: '/advantages/medal.svg', title: 'MT5 Trading platform', body: 'At DPM Markets we provide the World Leading MT5 trading platform.' },
   { icon: '/advantages/responsive.svg', title: 'Web and Mobile Trading', body: 'Trade with the leading MetaTrader platforms on Desktop, Smartphone or Web.' },
   { icon: '/advantages/payment.svg', title: 'Withdrawals', body: 'Many Withdrawal are processed Instantly and 99% under 2 hours.' },
   { icon: '/advantages/timer.svg', title: 'Leverage up to 1:1000', body: 'Amplify your trading potential by up to 1000 times!' },
@@ -19,28 +19,28 @@ const CARDS = [
 
 const FAQS = [
   {
-    q: 'What Instruments Can I Trade With BBS Markets?',
-    a: 'You can trade 300+ instruments at BBS Markets, including Forex, commodities, indices, futures, metals, and more.',
+    q: 'What Instruments Can I Trade With DPM Markets?',
+    a: 'You can trade 300+ instruments at DPM Markets, including Forex, commodities, indices, futures, metals, and more.',
   },
   {
-    q: 'Which Trading Platforms Does BBS Markets Support?',
-    a: 'BBS Markets offers the world-leading MetaTrader 5 (MT5) platform, available on desktop, web, and mobile devices.',
+    q: 'Which Trading Platforms Does DPM Markets Support?',
+    a: 'DPM Markets offers the world-leading MetaTrader 5 (MT5) platform, available on desktop, web, and mobile devices.',
   },
   {
-    q: 'Does BBS Markets Offer Commission-Free Trading?',
-    a: 'Yes. BBS Markets provides commission-free trading on Standard Accounts, allowing you to trade with $0 commissions.',
+    q: 'Does DPM Markets Offer Commission-Free Trading?',
+    a: 'Yes. DPM Markets provides commission-free trading on Standard Accounts, allowing you to trade with $0 commissions.',
   },
   {
-    q: 'What Spreads Can I Expect At BBS Markets?',
-    a: 'BBS Markets offers ultra-low spreads on ECN accounts, giving traders access to highly competitive pricing sourced from Tier 1 liquidity providers.',
+    q: 'What Spreads Can I Expect At DPM Markets?',
+    a: 'DPM Markets offers ultra-low spreads on ECN accounts, giving traders access to highly competitive pricing sourced from Tier 1 liquidity providers.',
   },
   {
-    q: 'How Fast Is Trade Execution At BBS Markets?',
-    a: 'All trades at BBS Markets are executed using true market execution, with no requotes and no trade rejections.',
+    q: 'How Fast Is Trade Execution At DPM Markets?',
+    a: 'All trades at DPM Markets are executed using true market execution, with no requotes and no trade rejections.',
   },
   {
-    q: 'How Secure Are My Funds With BBS Markets?',
-    a: 'Client funds at BBS Markets are fully segregated, with third-party monitoring to ensure transparency and security.',
+    q: 'How Secure Are My Funds With DPM Markets?',
+    a: 'Client funds at DPM Markets are fully segregated, with third-party monitoring to ensure transparency and security.',
   },
 ]
 
@@ -180,14 +180,14 @@ export default function AdvantagesPage() {
               className="banner-item text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight"
               style={{ fontFamily: 'var(--font-inter)', color: '#101829', ['--i' as string]: 1 }}
             >
-              Why Traders Choose<br />BBS Markets
+              Why Traders Choose<br />DPM Markets
             </h1>
 
             <p
               className="banner-item text-base md:text-lg text-slate-500 font-normal leading-relaxed max-w-lg"
               style={{ '--i': 2 } as React.CSSProperties}
             >
-              Experience smooth, flexible trading with BBS Markets, featuring tight spreads,
+              Experience smooth, flexible trading with DPM Markets, featuring tight spreads,
               fast execution, and access to a wide range of instruments on web and mobile platforms.
             </p>
 
