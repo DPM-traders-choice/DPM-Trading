@@ -15,10 +15,11 @@ const LANGUAGES = [
 type NavChild  = { label: string; href: string }
 type NavColumn = NavChild[]
 type NavItem   = {
-  label:   string
-  href:    string
-  align?:  'left' | 'right'
-  columns: NavColumn[] | null
+  label:      string
+  href:       string
+  align?:     'left' | 'right'
+  columns:    NavColumn[] | null
+  noNavigate?: boolean
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -40,7 +41,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label:  'Promotions',
-    href:   '/promotions',
+    href:   '#',
     columns: [
       [{ label: 'Welcome Bonus', href: '/promotions/welcome-bonus' }],
     ],
@@ -51,11 +52,12 @@ const NAV_ITEMS: NavItem[] = [
     columns: null,
   },
   {
-    label:  'Partners',
-    href:   '/partners',
+    label:      'Partners',
+    href:       '/partners',
+    noNavigate: true,
     columns: [
       [
-        { label: 'Partner',           href: '/partners/partner' },
+        { label: 'Partner',           href: '/partner' },
         { label: 'Create Your Bonus', href: '/partners/create-your-bonus' },
       ],
     ],
@@ -143,6 +145,9 @@ export default function Header() {
     '/trading/instruments',
     '/trading/calendar',
     '/promotions/welcome-bonus',
+    '/copy-trading',
+    '/partners',
+    '/partner',
   ]
   const SCROLL_WHITE_PAGES = ['/trading/account-types']
   const isLight = LIGHT_PAGES.some(p => pathname === p || pathname.startsWith(p + '/'))
@@ -189,71 +194,91 @@ export default function Header() {
 
           <nav className="hidden lg:flex items-center gap-0.5">
             {NAV_ITEMS.map((item) => {
-              const isOpen   = activeDropdown === item.label
-              const isActive = isNavActive(item.href)
-              return (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => item.columns ? openDropdown(item.label) : undefined}
-                  onMouseLeave={item.columns ? scheduleClose : undefined}
-                >
-                  <Link
-                    href={item.href}
-                    className={`relative flex items-center gap-1.5 px-3.5 py-2 text-base font-semibold tracking-wide rounded-md transition-all duration-200 select-none ${
-                      isOpen || isActive ? navActiveClass : navTextClass
-                    }`}
+                const isOpen   = activeDropdown === item.label
+                const isActive = isNavActive(item.href)
+                return (
+                  <div
+                    key={item.label}
+                    className="relative"
+                    onMouseEnter={() => item.columns ? openDropdown(item.label) : undefined}
+                    onMouseLeave={item.columns ? scheduleClose : undefined}
                   >
-                    {item.label}
-                    {item.columns && (
-                      <ChevronDown
-                        size={14}
-                        strokeWidth={2.5}
-                        className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-                      />
+                    {item.noNavigate ? (
+                      <button
+                        onClick={() => openDropdown(item.label)}
+                        className={`relative flex items-center gap-1.5 px-3.5 py-2 text-base font-semibold tracking-wide rounded-md transition-all duration-200 select-none ${
+                          isOpen || isActive ? navActiveClass : navTextClass
+                        }`}
+                      >
+                        {item.label}
+                        <ChevronDown
+                          size={14}
+                          strokeWidth={2.5}
+                          className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                        />
+                        <span
+                          className={`absolute bottom-0 left-3.5 right-3.5 h-0.5 rounded-full transition-all duration-200 ${underlineBg} ${
+                            isActive || isOpen ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                          }`}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className={`relative flex items-center gap-1.5 px-3.5 py-2 text-base font-semibold tracking-wide rounded-md transition-all duration-200 select-none ${
+                          isOpen || isActive ? navActiveClass : navTextClass
+                        }`}
+                      >
+                        {item.label}
+                        {item.columns && (
+                          <ChevronDown
+                            size={14}
+                            strokeWidth={2.5}
+                            className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                          />
+                        )}
+                        <span
+                          className={`absolute bottom-0 left-3.5 right-3.5 h-0.5 rounded-full transition-all duration-200 ${underlineBg} ${
+                            isActive || isOpen ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                          }`}
+                        />
+                      </Link>
                     )}
-                    {/* Active / hover underline */}
-                    <span
-                      className={`absolute bottom-0 left-3.5 right-3.5 h-0.5 rounded-full transition-all duration-200 ${underlineBg} ${
-                        isActive || isOpen ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-                      }`}
-                    />
-                  </Link>
 
-                  {item.columns && (
-                    <div
-                      onMouseEnter={cancelClose}
-                      onMouseLeave={scheduleClose}
-                      className={`absolute top-[calc(100%+10px)] z-50 ${
-                        item.align === 'right' ? 'right-0' : 'left-0'
-                      } transition-all duration-200 ease-out origin-top ${
-                        isOpen
-                          ? 'opacity-100 translate-y-0 pointer-events-auto'
-                          : 'opacity-0 -translate-y-2 pointer-events-none'
-                      }`}
-                    >
-                      <div className="rounded-3xl bg-white overflow-hidden font-sans shadow-[0_8px_40px_rgba(0,0,0,0.12)]">
-                        <div className={`flex ${item.columns.length > 1 ? 'divide-x divide-gray-100' : ''}`}>
-                          {item.columns.map((col, colIdx) => (
-                            <div key={colIdx} className="py-4 px-3 min-w-50">
-                              {col.map((child) => (
-                                <Link
-                                  key={child.label}
-                                  href={child.href}
-                                  className="block px-4 py-3 text-[15px] font-semibold text-[#2d3748] hover:text-[#0c1422] hover:bg-gray-50 rounded-2xl transition-all duration-150 whitespace-nowrap"
-                                >
-                                  {child.label}
-                                </Link>
-                              ))}
-                            </div>
-                          ))}
+                    {item.columns && (
+                      <div
+                        onMouseEnter={cancelClose}
+                        onMouseLeave={scheduleClose}
+                        className={`absolute top-[calc(100%+10px)] z-50 ${
+                          item.align === 'right' ? 'right-0' : 'left-0'
+                        } transition-all duration-200 ease-out origin-top ${
+                          isOpen
+                            ? 'opacity-100 translate-y-0 pointer-events-auto'
+                            : 'opacity-0 -translate-y-2 pointer-events-none'
+                        }`}
+                      >
+                        <div className="rounded-3xl bg-white overflow-hidden font-sans shadow-[0_8px_40px_rgba(0,0,0,0.12)]">
+                          <div className={`flex ${item.columns.length > 1 ? 'divide-x divide-gray-100' : ''}`}>
+                            {item.columns.map((col, colIdx) => (
+                              <div key={colIdx} className="py-4 px-3 min-w-50">
+                                {col.map((child) => (
+                                  <Link
+                                    key={child.label}
+                                    href={child.href}
+                                    className="block px-4 py-3 text-[15px] font-semibold text-[#2d3748] hover:text-[#0c1422] hover:bg-gray-50 rounded-2xl transition-all duration-150 whitespace-nowrap"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              )
-            })}
+                    )}
+                  </div>
+                )
+              })}
           </nav>
         </div>
 
@@ -387,6 +412,7 @@ export default function Header() {
           })}
 
           {/* Mobile language selector */}
+
           <div className="border-t border-white/5 pt-3 pb-1 flex gap-2">
             {LANGUAGES.map((lang) => (
               <button
