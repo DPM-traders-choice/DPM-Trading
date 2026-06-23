@@ -215,7 +215,7 @@ export default function InstrumentsPage() {
           <div className="flex flex-col items-center text-center gap-4 mb-12">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight max-w-3xl" style={{ fontFamily: 'var(--font-inter)', color: '#101829' }}>
               Trade Global Markets with{' '}
-              <span style={{ color: '#1a56db' }}>DPM Market</span>
+              <span style={{ color: '#1a56db' }}>DPM</span>
             </h2>
             <p className="text-base md:text-lg text-slate-500 font-normal max-w-xl leading-relaxed">
               Access forex, indices, commodities, metals, and cryptocurrencies all from one platform.

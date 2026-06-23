@@ -84,7 +84,7 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer
-      className="relative"
+      className="relative "
       style={{ background: '#060d1c', borderTop: '1px solid rgba(255,255,255,0.06)' }}
     >
       {/* Top accent line */}
@@ -102,7 +102,7 @@ export default function Footer() {
           <div className="lg:col-span-2 flex flex-col gap-6">
             <Link href="/" className="w-fit">
               <div className="relative h-16 w-52">
-                <Image src="/logo.png" alt="DPM" fill className="object-contain object-left" />
+                <Image src="/logoGold.png" alt="DPM" fill className="object-contain object-left" />
               </div>
             </Link>
 
@@ -152,9 +152,12 @@ export default function Footer() {
         <div className="h-px bg-white/5" />
 
         {/* Risk disclaimer */}
-        <div className="py-6">
+        <div className="py-6 flex flex-col gap-4">
           <p className="text-[11px] text-white/20 leading-relaxed">
-            <span className="font-semibold text-white/30">Risk Warning:</span> Trading leveraged products such as Forex and CFDs carries a high level of risk and may not be suitable for all investors. You could sustain a loss of some or all of your invested capital. Please ensure you fully understand the risks involved before trading.
+            <span className="font-semibold text-white/30">Risk Warning:</span> Trading Leveraged Products such as Forex and Derivatives may not be suitable for all investors as they carry a high degree of risk to your capital. Please ensure that you fully understand the risks involved, taking into account your investments objectives and level of experience, before trading, and if necessary, seek independent advice. Please read the full Risk Disclosure.
+          </p>
+          <p className="text-[11px] text-white/20 leading-relaxed">
+            Regional Restrictions: DPM Markets does not provide services to residents of the USA, Sudan, Syria, North Korea.
           </p>
         </div>
 

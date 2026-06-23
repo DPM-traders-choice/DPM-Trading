@@ -37,13 +37,13 @@ const TESTIMONIALS = [
   {
     text: 'What sets DPM apart is the transparency. No hidden fees, no requotes. I can trust my trades go through at the price I see. That kind of reliability is rare in this industry.',
     name: 'James T',
-    role: 'Futures Trader',
-    avatar: 'https://i.pravatar.cc/80?img=15',
+    role: 'Gold Trader',
+    avatar: 'https://i.pravatar.cc/80?img=12',
   },
   {
-    text: 'The DPM mobile app is outstanding. I manage my entire portfolio on the go without missing a beat. The interface is clean, intuitive, and just as powerful as the desktop platform.',
+    text: 'The DPM MT5 is outstanding. I manage my entire portfolio on the go without missing a beat. The interface is clean, intuitive, and just as powerful as the desktop platform.',
     name: 'Priya N',
-    role: 'Options Trader',
+    role: 'Forex Trader',
     avatar: 'https://i.pravatar.cc/80?img=44',
   },
 ]
