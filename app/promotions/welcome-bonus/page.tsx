@@ -54,7 +54,7 @@ export default function WelcomeBonusPage() {
             </p>
             <div className="banner-item" style={{ ['--i' as string]: 2 }}>
               <Link
-                href="#"
+                href="/register"
                 className="inline-flex items-center justify-center rounded-lg bg-white text-[#0B111E] hover:bg-white/90 transition-colors duration-300 px-7 py-3.5 text-base font-semibold"
               >
                 Get Your Bonus
@@ -151,7 +151,7 @@ export default function WelcomeBonusPage() {
             </ul>
             <div className="mt-2">
               <a
-                href="#"
+                href="/register"
                 className="inline-flex items-center justify-center rounded-lg bg-[#0f1e3c] text-white hover:bg-[#1a2f5e] transition-colors duration-300 px-8 py-3.5 text-base font-semibold"
               >
                 Sign Up Now
@@ -240,7 +240,7 @@ export default function WelcomeBonusPage() {
 
           <div className="wb-reveal" style={{ ['--d' as string]: '200ms' }}>
             <a
-              href="#"
+              href="/register"
               className="inline-flex items-center justify-center rounded-lg bg-[#0f1e3c] text-white hover:bg-[#1a2f5e] transition-colors duration-300 px-10 py-4 text-base font-semibold"
             >
               Sign Up Now
@@ -276,7 +276,7 @@ export default function WelcomeBonusPage() {
             </p>
             <div>
               <a
-                href="#"
+                href="/about-us/legal-documents"
                 className="inline-flex items-center justify-center rounded-lg border-2 border-[#0f1e3c] text-[#0f1e3c] hover:bg-[#0f1e3c] hover:text-white transition-colors duration-300 px-8 py-3.5 text-base font-semibold"
               >
                 Learn More

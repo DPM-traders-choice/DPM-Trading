@@ -283,7 +283,7 @@ export default function DepositsWithdrawalsPage() {
           </p>
 
           <Link
-            href="#"
+            href="/register"
             className="banner-item mt-2 group relative flex gap-2 w-fit overflow-hidden cursor-pointer transition-colors duration-300 text-center justify-center items-center rounded-lg focus:outline-none border-solid focus:ring-4 border bg-[#101829] border-[#101829] text-white focus:ring-gray-800 hover:bg-[#1a2540] px-6 py-3 text-base lg:text-lg font-medium"
             style={{ '--i': 3 } as React.CSSProperties}
           >
@@ -464,7 +464,7 @@ export default function DepositsWithdrawalsPage() {
           {/* CTA */}
           <div className="flex justify-center mt-14">
             <Link
-              href="#"
+              href="/register"
               className="inline-flex items-center justify-center rounded-xl bg-[#101829] border border-[#101829] text-white hover:bg-[#1a2540] transition-colors duration-300 px-10 py-4 text-base font-semibold"
             >
               Start Trading
@@ -540,7 +540,7 @@ export default function DepositsWithdrawalsPage() {
             Open a DPM account today and enjoy instant deposits with no hidden fees.
           </p>
           <Link
-            href="#"
+            href="/register"
             className="mt-2 inline-flex items-center justify-center rounded-lg bg-[#101829] border border-[#101829] text-white hover:bg-[#1a2540] transition-colors duration-300 px-8 py-3.5 text-base font-medium"
           >
             Open an Account

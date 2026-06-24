@@ -32,19 +32,71 @@ const raleway = Raleway({
   weight: ["800", "900"],
 });
 
+const SITE_URL = "https://www.dpmtrade.com"
+
 export const metadata: Metadata = {
-  title: "DPM",
-  description: "Premium Trading Platform",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "DPM | Premium CFD Trading Platform",
+    template: "%s | DPM",
+  },
+  description:
+    "DPM is a premier CFD broker offering Forex, Commodities, Metals, Stocks, and Futures trading via MetaTrader 5. Deep liquidity and dedicated support for retail and professional traders worldwide.",
+  keywords: [
+    "CFD trading",
+    "forex broker",
+    "MetaTrader 5",
+    "online trading platform",
+    "forex trading",
+    "commodities trading",
+    "metals trading",
+    "stocks CFD",
+    "futures trading",
+    "copy trading",
+    "DPM broker",
+    "DPM trading",
+  ],
+  authors: [{ name: "DPM", url: SITE_URL }],
+  creator: "DPM",
+  publisher: "DPM",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: "DPM",
-    description: "Premium Trading Platform",
-    images: [{ url: "/socialMedia.png", width: 1200, height: 630, alt: "DPM" }],
     type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: "DPM",
+    title: "DPM | Premium CFD Trading Platform",
+    description:
+      "Trade Forex, Commodities, Metals, Stocks & Futures with DPM — MetaTrader 5, professional-grade tools, and dedicated global support.",
+    images: [
+      {
+        url: "/socialMedia.png",
+        width: 1200,
+        height: 630,
+        alt: "DPM — Premium CFD Trading Platform",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DPM",
-    description: "Premium Trading Platform",
+    site: "@DPMTrading",
+    creator: "@DPMTrading",
+    title: "DPM | Premium CFD Trading Platform",
+    description:
+      "Trade Forex, Commodities, Metals, Stocks & Futures with DPM — MetaTrader 5, professional-grade tools, and dedicated global support.",
     images: ["/socialMedia.png"],
   },
   icons: {
@@ -52,11 +104,25 @@ export const metadata: Metadata = {
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: { url: "/favicon/apple-touch-icon.png" },
-    other: [
-      { rel: "manifest", url: "/favicon/site.webmanifest" },
-    ],
+    apple: { url: "/favicon/apple-touch-icon.png", sizes: "180x180" },
+    shortcut: "/favicon/favicon.ico",
   },
+  manifest: "/favicon/site.webmanifest",
+  category: "finance",
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  name: "DPM",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/socialMedia.png`,
+  description:
+    "DPM is a comprehensive CFD trading provider offering Forex, Commodities, Metals, Stocks, and Futures via MetaTrader 5.",
+  sameAs: [],
+  serviceType: "CFD Broker",
+  areaServed: "Worldwide",
 };
 
 export default function RootLayout({
@@ -69,6 +135,12 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${geistMono.variable} ${cormorant.variable} ${raleway.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#0B111E] text-white overflow-x-hidden">
         <ScrollReset />
         <LoadingScreen />

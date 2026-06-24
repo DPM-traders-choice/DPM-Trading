@@ -82,7 +82,7 @@ export default function PartnerPage() {
             style={{ '--i': 4 } as React.CSSProperties}
           >
             <Link
-              href="#"
+              href="/register"
               className="inline-flex items-center justify-center rounded-lg bg-[#101829] text-white hover:bg-[#1a2540] transition-colors duration-300 px-7 py-3.5 text-base font-semibold"
             >
               Become a Partner
@@ -266,7 +266,7 @@ export default function PartnerPage() {
 
           {/* CTA */}
           <a
-            href="#"
+            href="/register"
             className="pp-reveal inline-flex items-center justify-center rounded-xl px-10 py-4 text-base font-semibold text-white transition-all duration-300 hover:opacity-85"
             style={{
               background: '#101829',

@@ -193,7 +193,7 @@ export default function AdvantagesPage() {
 
             <div className="banner-item" style={{ '--i': 3 } as React.CSSProperties}>
               <Link
-                href="#"
+                href="/register"
                 className="inline-flex items-center justify-center rounded-lg bg-[#101829] border border-[#101829] text-white hover:bg-[#1a2540] transition-colors duration-300 px-7 py-3.5 text-base font-semibold"
               >
                 Get Full Access

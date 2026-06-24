@@ -173,7 +173,7 @@ export default function Footer() {
             {['Privacy Policy', 'Terms & Conditions', 'Cookie Policy'].map((item) => (
               <Link
                 key={item}
-                href="#"
+                href="/about-us/legal-documents"
                 className="text-[11px] text-white/20 hover:text-white/50 transition-colors duration-200"
               >
                 {item}

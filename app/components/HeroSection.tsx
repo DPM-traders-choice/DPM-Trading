@@ -209,7 +209,7 @@ export default function HeroSection() {
                 {/* CTA */}
                 <div className="flex flex-col items-start gap-1.5">
                   <Link
-                    href="#"
+                    href="/register"
                     className="px-6 py-2.5 text-base font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',

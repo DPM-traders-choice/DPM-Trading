@@ -317,7 +317,7 @@ export default function Header() {
           </div>
 
           <Link
-            href="#"
+            href="/login"
             className="px-6 py-2.5 text-sm font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-85"
             style={{
               background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
@@ -432,7 +432,7 @@ export default function Header() {
 
           <div className="pt-3 pb-4">
             <Link
-              href="#"
+              href="/login"
               className="block w-full py-2.5 text-center text-sm font-bold rounded-lg transition-opacity duration-200 hover:opacity-85"
               style={{
                 background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',

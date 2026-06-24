@@ -65,7 +65,7 @@ export default function WhyChooseUs() {
                 A multicultural board of professionals approaching global clientele in a bespoke and local way.
               </p>
             </div>
-            <Link href="#" className="bento-cta relative flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
+            <Link href="/about-us/about-dpm" className="bento-cta relative flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
               Learn More <ArrowUpRight size={18} strokeWidth={2.5} />
             </Link>
 
@@ -101,7 +101,7 @@ export default function WhyChooseUs() {
                 We do not treat our Clients and Partners as numbers but strive to build sustainable long-term relationships.
               </p>
             </div>
-            <Link href="#" className="bento-cta relative flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
+            <Link href="/register" className="bento-cta relative flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
               Join Now <ArrowUpRight size={18} strokeWidth={2.5} />
             </Link>
 
@@ -139,7 +139,7 @@ export default function WhyChooseUs() {
                   Partner with a flexible bespoke partner and unlock exclusive earning opportunities.
                 </p>
               </div>
-              <Link href="#" className="bento-cta flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
+              <Link href="/register" className="bento-cta flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
                 Get Started <ArrowUpRight size={18} strokeWidth={2.5} />
               </Link>
             </div>

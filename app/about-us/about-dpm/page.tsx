@@ -60,7 +60,7 @@ export default function AboutDPMPage() {
             </p>
 
             <Link
-              href="#"
+              href="/register"
               className="of-item w-fit flex items-center justify-center rounded-lg bg-black border border-black text-white hover:bg-gray-900 transition-colors duration-300 px-6 py-3 text-base font-medium"
               style={{ '--i': 5 } as React.CSSProperties}
             >

@@ -91,7 +91,7 @@ export default function PartnersSection() {
             {/* CTA */}
             <div className="ps-cta flex items-center gap-4">
               <Link
-                href="#"
+                href="/register"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold transition-opacity duration-200 hover:opacity-85"
                 style={{
                   background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
@@ -102,7 +102,7 @@ export default function PartnersSection() {
                 Learn More <ArrowUpRight size={15} strokeWidth={2.5} />
               </Link>
               <Link
-                href="#"
+                href="/trading/advantages"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-200"
                 style={{ color: '#2563eb' }}
               >
