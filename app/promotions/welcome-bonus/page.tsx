@@ -72,7 +72,7 @@ export default function WelcomeBonusPage() {
             style={{ ['--i' as string]: 1 }}
           >
             <Image
-              src="/bonus/bonus.webp"
+              src="/aboutus/bonus.webp"
               alt="Welcome Bonus"
               width={680}
               height={620}
