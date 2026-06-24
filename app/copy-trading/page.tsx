@@ -75,7 +75,7 @@ function HowItWorksBanner() {
       }}
     >
       {/* Decorative image — bottom right */}
-      <div className="absolute bottom-0 right-0 w-48 md:w-64 lg:w-80 pointer-events-none select-none">
+      <div className="absolute bottom-0 right-0 w-36 md:w-64 lg:w-80 pointer-events-none select-none z-0">
         <Image
           src="/copyTrading/card-3-428w.webp"
           alt=""
@@ -85,7 +85,7 @@ function HowItWorksBanner() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-12">
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center gap-12">
 
         {/* Tab switcher */}
         <div

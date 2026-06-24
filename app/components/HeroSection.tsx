@@ -139,25 +139,25 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col flex-1">
-        <div className="shrink-0 pt-36" />
+        <div className="shrink-0 pt-24 md:pt-36" />
 
         <div className="flex-1 flex flex-col justify-center pt-4 pb-24">
           <div className="max-w-345 mx-auto w-full px-6 md:px-12">
 
-            {/* Fixed-height stage — prevents layout shift between slides */}
-            <div className="relative" style={{ height: 'clamp(480px, 56vh, 580px)' }}>
+            {/* Slide content — auto height on mobile, fixed on desktop */}
+            <div className="relative lg:h-[clamp(480px,56vh,580px)]">
               <div
                 key={current}
-                className={`absolute inset-x-0 top-0 flex flex-col items-start text-left gap-6 ${slideClass}`}
+                className={`lg:absolute inset-x-0 top-0 flex flex-col items-start text-left gap-4 md:gap-6 ${slideClass}`}
               >
                 {/* Trust line */}
-                <p className="text-sm md:text-base font-semibold text-white/55 tracking-wide">
+                <p className="text-xs md:text-base font-semibold text-white/55 tracking-wide">
                   {slide.trust}
                 </p>
 
-                {/* Headline — SplitText per line */}
+                {/* Headline */}
                 <h1
-                  className="tracking-tight flex flex-col items-start font-bold xl:font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+                  className="tracking-tight flex flex-col items-start font-bold xl:font-extrabold text-3xl md:text-5xl lg:text-6xl xl:text-7xl"
                   style={{ fontFamily: 'var(--font-inter)', letterSpacing: '-0.03em', lineHeight: 1.2 }}
                 >
                   {slide.headline.map((line, li) => (
@@ -181,23 +181,23 @@ export default function HeroSection() {
 
                 {/* Description (optional) */}
                 {slide.desc && (
-                  <p className="text-gray-400 font-normal text-base md:text-lg lg:text-xl max-w-lg leading-relaxed">
+                  <p className="text-gray-400 font-normal text-sm md:text-lg lg:text-xl max-w-lg leading-relaxed">
                     {slide.desc}
                   </p>
                 )}
 
                 {/* Features */}
-                <div className="flex flex-col items-start gap-2.5">
+                <div className="flex flex-col items-start gap-2">
                   {slide.features.map((row, ri) => (
-                    <div key={ri} className="flex items-center gap-6 flex-wrap">
+                    <div key={ri} className="flex items-center gap-3 md:gap-6 flex-wrap">
                       {row.map((item) => (
                         <div key={item} className="flex items-center gap-2">
-                          <span className="flex items-center justify-center w-4.5 h-4.5 rounded-full bg-blue-600/20 shrink-0">
+                          <span className="flex items-center justify-center w-4 h-4 rounded-full bg-blue-600/20 shrink-0">
                             <svg width="9" height="7" viewBox="0 0 10 8" fill="none">
                               <path d="M1 4L3.5 6.5L9 1" stroke="#60a5fa" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                           </span>
-                          <span className="text-sm md:text-base text-white/80 font-medium whitespace-nowrap">
+                          <span className="text-xs md:text-base text-white/80 font-medium">
                             {item}
                           </span>
                         </div>
@@ -210,7 +210,7 @@ export default function HeroSection() {
                 <div className="flex flex-col items-start gap-1.5">
                   <Link
                     href="/register"
-                    className="px-6 py-2.5 text-base font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-90"
+                    className="px-5 py-2 md:px-6 md:py-2.5 text-sm md:text-base font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
                       color: '#1a0f00',

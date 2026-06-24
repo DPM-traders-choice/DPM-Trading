@@ -116,26 +116,26 @@ export default function PartnersSection() {
                className="ps-right relative w-full lg:w-[480px] shrink-0 flex items-center justify-center">
 
             {/* Background circle */}
-            <div className="absolute w-[380px] h-[380px] rounded-full pointer-events-none"
+            <div className="absolute w-50 h-50 md:w-95 md:h-95 rounded-full pointer-events-none"
                  style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)' }} />
 
             {/* Stat card */}
-            <div className="absolute top-4 right-0 lg:right-[-20px] bg-white rounded-2xl px-5 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
-                 style={{ minWidth: '180px', zIndex: 10 }}>
-              <p className="text-2xl font-black" style={{ color: '#0c1422' }}>100%</p>
-              <p className="text-sm font-medium mt-0.5" style={{ color: '#64748b' }}>Satisfied Clients</p>
-              <div className="mt-3 h-1.5 rounded-full overflow-hidden" style={{ background: '#e2e8f0' }}>
+            <div className="absolute top-2 right-0 lg:right-[-20px] bg-white rounded-xl md:rounded-2xl px-3 py-2 md:px-5 md:py-4 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+                 style={{ minWidth: '120px', zIndex: 10 }}>
+              <p className="text-lg md:text-2xl font-black" style={{ color: '#0c1422' }}>100%</p>
+              <p className="text-xs md:text-sm font-medium mt-0.5" style={{ color: '#64748b' }}>Satisfied Clients</p>
+              <div className="mt-2 h-1 md:h-1.5 rounded-full overflow-hidden" style={{ background: '#e2e8f0' }}>
                 <div className="h-full rounded-full" style={{ width: '100%', background: 'linear-gradient(90deg, #2563eb, #60a5fa)' }} />
               </div>
             </div>
 
             {/* Main illustration */}
-            <div className="relative w-[340px] h-[340px]">
+            <div className="relative w-[180px] h-[180px] md:w-[340px] md:h-[340px]">
               <Image
                 src="/prsentbox.png"
                 alt="Partner"
                 fill
-                sizes="340px"
+                sizes="(max-width: 768px) 180px, 340px"
                 className="object-contain drop-shadow-2xl"
               />
             </div>

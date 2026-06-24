@@ -57,7 +57,7 @@ export default function StatCards() {
                 <stat.Icon
                   size={28}
                   strokeWidth={1.6}
-                  className="shrink-0"
+                  className="shrink-0 w-4 h-4 md:w-7 md:h-7"
                   style={{ color: '#D4A843', filter: 'drop-shadow(0 0 6px rgba(212,168,67,0.5))' }}
                 />
 

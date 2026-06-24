@@ -77,7 +77,7 @@ export default function OvernightFeesPage() {
           {/* Header */}
           <div className="flex flex-col items-center text-center gap-4 max-w-3xl">
             <p className="text-xl font-bold text-blue-500">BBS Market</p>
-            <h2 className="text-gray-900 text-3xl font-black md:text-4xl lg:text-5xl line-height-headings-override whitespace-nowrap">Top-Tier Trading Conditions, Worldwide</h2>
+            <h2 className="text-gray-900 text-2xl font-black md:text-4xl lg:text-5xl leading-tight">Top-Tier Trading Conditions, Worldwide</h2>
             <p className="text-gray-500 text-lg lg:text-xl leading-relaxed">
               BBS Markets&apos; transparent fees deliver competitive spreads across all instruments.
             </p>

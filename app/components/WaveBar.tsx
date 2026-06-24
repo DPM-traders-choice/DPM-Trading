@@ -64,7 +64,7 @@ export default function WaveBar() {
 
   return (
     <div
-      className="relative w-full overflow-hidden flex items-end justify-between bg-white"
+      className="relative w-full overflow-hidden items-end justify-between bg-white hidden lg:flex"
       style={{ height: '110px' }}
     >
       {BASES.map((h, i) => (

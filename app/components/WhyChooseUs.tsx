@@ -69,7 +69,7 @@ export default function WhyChooseUs() {
               Learn More <ArrowUpRight size={18} strokeWidth={2.5} />
             </Link>
 
-            <div className="bento-img absolute bottom-0 right-0 w-52 h-64 pointer-events-none">
+            <div className="bento-img absolute bottom-0 right-0 w-32 h-40 md:w-52 md:h-64 pointer-events-none">
               <div className="wcu-img-inner w-full h-full" style={{ transformOrigin: 'bottom right' }}>
                 <Image src="/Trophy.png" alt="Trophy" fill sizes="(max-width:768px) 100vw, 33vw" className="object-contain object-bottom drop-shadow-2xl" />
               </div>
@@ -105,7 +105,7 @@ export default function WhyChooseUs() {
               Join Now <ArrowUpRight size={18} strokeWidth={2.5} />
             </Link>
 
-            <div className="bento-img absolute bottom-0 right-0 w-40 h-52 pointer-events-none">
+            <div className="bento-img absolute bottom-0 right-0 w-24 h-36 md:w-40 md:h-52 pointer-events-none">
               <div className="wcu-img-inner w-full h-full" style={{ transformOrigin: 'bottom right' }}>
                 <Image src="/client.png" alt="Clients" fill sizes="(max-width:768px) 100vw, 33vw" className="object-contain object-bottom drop-shadow-2xl" />
               </div>
@@ -157,7 +157,7 @@ export default function WhyChooseUs() {
               ))}
             </div>
 
-            <div className="bento-img absolute -bottom-10 -right-10 w-44 h-44 pointer-events-none">
+            <div className="bento-img absolute -bottom-10 -right-10 w-24 h-24 md:w-44 md:h-44 pointer-events-none">
               <div className="wcu-img-inner w-full h-full" style={{ transformOrigin: 'bottom right' }}>
                 <Image src="/prsentbox.png" alt="Partnership" fill sizes="(max-width:768px) 100vw, 33vw" className="object-contain object-bottom drop-shadow-2xl" />
               </div>

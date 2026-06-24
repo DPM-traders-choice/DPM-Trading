@@ -231,7 +231,7 @@ export default function AccountTypes() {
                   </div>
 
                   {/* Right — icon */}
-                  <div className="shrink-0 relative flex items-center justify-center w-36 h-36">
+                  <div className="shrink-0 relative flex items-center justify-center w-16 h-16 md:w-36 md:h-36">
 
                     {/* Icon glow bg */}
                     <div
@@ -252,6 +252,7 @@ export default function AccountTypes() {
                       <acc.Icon
                         size={72}
                         strokeWidth={1}
+                        className="w-8 h-8 md:w-18 md:h-18"
                         style={{
                           color: acc.accent,
                           filter: `drop-shadow(0 0 16px ${acc.accent}60)`,

@@ -76,7 +76,7 @@ export default function ScrollPath() {
   return (
     <div
       ref={outerRef}
-      className="absolute inset-0 pointer-events-none z-0"
+      className="absolute inset-0 pointer-events-none z-0 hidden lg:block"
       aria-hidden
     >
       {/* clip-path on this div — GPU composited, no repaint on scroll */}
