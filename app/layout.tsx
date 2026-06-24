@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono, Cormorant_Garamond, Raleway } from "next/font/google";
+import Script from "next/script";
 import Header from "@/app/components/Header";
 import CTABanner from "@/app/components/CTABanner";
 import Footer from "@/app/components/Footer";
@@ -142,8 +143,55 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#0B111E] text-white overflow-x-hidden">
+        {/* Hidden Google Translate widget anchor */}
+        <div id="google_translate_element" style={{ display: 'none' }} />
+
+        {/* Google Translate — init must run before the element script */}
+        <Script id="gt-init" strategy="afterInteractive">{`
+          window.googleTranslateElementInit = function() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en',
+              autoDisplay: false,
+              includedLanguages: 'en,my,th'
+            }, 'google_translate_element');
+
+            // Remove body top offset that Google Translate injects
+            var observer = new MutationObserver(function() {
+              if (document.body.style.top) {
+                document.body.style.top = '';
+              }
+            });
+            observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+          }
+        `}</Script>
+        <Script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
         <ScrollReset />
         <LoadingScreen />
+
+        {/* ── Floating Telegram button ── */}
+        <a
+          href="/telegram"
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-full shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl"
+          style={{
+            background: '#1a2333',
+            border: '1px solid rgba(255,255,255,0.12)',
+          }}
+        >
+          <img
+            src="/Telegram_logo.svg.png"
+            alt="Telegram"
+            width={22}
+            height={22}
+            style={{ display: 'block' }}
+          />
+          <span className="text-white text-sm font-semibold whitespace-nowrap">
+            Talk to us on Telegram
+          </span>
+        </a>
+
         <Header />
         <div className="flex-1 flex flex-col">
           {children}

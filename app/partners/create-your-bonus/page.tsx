@@ -2,9 +2,44 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState, FormEvent } from 'react'
+
+type FormState = 'idle' | 'loading' | 'success' | 'error'
 
 export default function CreateYourBonusPage() {
+  const [status, setStatus] = useState<FormState>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setStatus('loading')
+    setErrorMsg('')
+
+    const fd = new FormData(e.currentTarget)
+    const payload = {
+      bbsId:       fd.get('bbsId') as string,
+      bonusName:   fd.get('bonusName') as string,
+      cashBack:    fd.get('cashBack') as string,
+      loseable:    fd.get('loseable') as string,
+      rebates:     fd.get('rebates') as string,
+      description: fd.get('description') as string,
+    }
+
+    try {
+      const res = await fetch('/api/bonus-submission', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error((await res.json()).error ?? 'Submission failed')
+      setStatus('success')
+      ;(e.target as HTMLFormElement).reset()
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong')
+      setStatus('error')
+    }
+  }
+
   useEffect(() => {
     const els = document.querySelectorAll('.cyb-reveal')
     const obs = new IntersectionObserver(
@@ -220,7 +255,7 @@ export default function CreateYourBonusPage() {
           </div>
 
           {/* Form */}
-          <form className="cyb-reveal flex flex-col gap-8" style={{ ['--d' as string]: '100ms' }}>
+          <form onSubmit={handleSubmit} className="cyb-reveal flex flex-col gap-8" style={{ ['--d' as string]: '100ms' }}>
 
             {/* Row 1 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -228,6 +263,8 @@ export default function CreateYourBonusPage() {
                 <label className="text-sm font-semibold text-gray-700 tracking-wide">BBS Markets ID</label>
                 <input
                   type="number"
+                  name="bbsId"
+                  required
                   className="w-full rounded-xl px-5 py-3.5 text-gray-900 text-sm outline-none transition-colors duration-200 focus:ring-2 focus:ring-blue-500 placeholder:text-gray-400"
                   style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1' }}
                   placeholder="Enter your ID"
@@ -237,6 +274,8 @@ export default function CreateYourBonusPage() {
                 <label className="text-sm font-semibold text-gray-700 tracking-wide">Name Your Bonus Promotion</label>
                 <input
                   type="text"
+                  name="bonusName"
+                  required
                   className="w-full rounded-xl px-5 py-3.5 text-gray-900 text-sm outline-none transition-colors duration-200 focus:ring-2 focus:ring-blue-500 placeholder:text-gray-400"
                   style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1' }}
                   placeholder="e.g. Summer Cashback Bonus"
@@ -249,6 +288,7 @@ export default function CreateYourBonusPage() {
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-semibold text-gray-700 tracking-wide">Does Your Bonus Promotion involve Cash Back?</label>
                 <select
+                  name="cashBack"
                   className="w-full rounded-xl px-5 py-3.5 text-gray-900 text-sm outline-none transition-colors duration-200 focus:ring-2 focus:ring-blue-500"
                   style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1' }}
                 >
@@ -260,6 +300,7 @@ export default function CreateYourBonusPage() {
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-semibold text-gray-700 tracking-wide">Is Your Bonus Promotion Lose-able?</label>
                 <select
+                  name="loseable"
                   className="w-full rounded-xl px-5 py-3.5 text-gray-900 text-sm outline-none transition-colors duration-200 focus:ring-2 focus:ring-blue-500"
                   style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1' }}
                 >
@@ -275,6 +316,7 @@ export default function CreateYourBonusPage() {
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-semibold text-gray-700 tracking-wide">Does Your Bonus Promotion Involve Rebates?</label>
                 <select
+                  name="rebates"
                   className="w-full rounded-xl px-5 py-3.5 text-gray-900 text-sm outline-none transition-colors duration-200 focus:ring-2 focus:ring-blue-500"
                   style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1' }}
                 >
@@ -289,21 +331,76 @@ export default function CreateYourBonusPage() {
             <div className="flex flex-col gap-2">
               <label className="text-sm font-semibold text-gray-700 tracking-wide">Describe Your Bonus Promotion</label>
               <textarea
+                name="description"
                 rows={6}
+                required
                 className="w-full rounded-xl px-5 py-3.5 text-gray-900 text-sm outline-none transition-colors duration-200 focus:ring-2 focus:ring-blue-500 resize-none placeholder:text-gray-400"
                 style={{ background: '#f8fafc', border: '1.5px solid #cbd5e1' }}
                 placeholder="Describe your bonus promotion in detail…"
               />
             </div>
 
+            {/* Status messages */}
+            {status === 'success' && (
+              <div
+                className="relative rounded-2xl px-6 py-5 overflow-hidden flex items-center gap-4"
+                style={{
+                  background: 'linear-gradient(135deg, #0B111E 0%, #12213a 100%)',
+                  border: '1.5px solid rgba(212,168,67,0.4)',
+                  boxShadow: '0 4px 24px rgba(212,168,67,0.15)',
+                }}
+              >
+                {/* Gold shimmer line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-px"
+                  style={{ background: 'linear-gradient(90deg, transparent, #D4A843, transparent)' }}
+                />
+                {/* Icon */}
+                <div
+                  className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-lg"
+                  style={{ background: 'linear-gradient(135deg, #F0CC70, #C49030)', color: '#1a0f00' }}
+                >
+                  ✓
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <p className="text-sm font-bold" style={{ color: '#F0CC70' }}>Submission Received</p>
+                  <p className="text-xs text-gray-400">Your bonus proposal has been submitted. Our team will contact you shortly.</p>
+                </div>
+              </div>
+            )}
+            {status === 'error' && (
+              <div
+                className="relative rounded-2xl px-6 py-5 overflow-hidden flex items-center gap-4"
+                style={{
+                  background: 'linear-gradient(135deg, #1a0a0a 0%, #2a1010 100%)',
+                  border: '1.5px solid rgba(239,68,68,0.35)',
+                  boxShadow: '0 4px 24px rgba(239,68,68,0.1)',
+                }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, #ef4444, transparent)' }} />
+                <div className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold" style={{ background: 'rgba(239,68,68,0.2)', color: '#f87171' }}>
+                  ✕
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <p className="text-sm font-bold text-red-400">Submission Failed</p>
+                  <p className="text-xs text-gray-400">{errorMsg || 'Something went wrong. Please try again.'}</p>
+                </div>
+              </div>
+            )}
+
             {/* Submit */}
             <div>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center rounded-xl px-10 py-4 text-base font-bold text-white transition-opacity duration-200 hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' }}
+                disabled={status === 'loading'}
+                className="inline-flex items-center justify-center rounded-xl px-10 py-4 text-base font-bold transition-opacity duration-200 hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+                style={{
+                  background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
+                  color: '#1a0f00',
+                  boxShadow: '0 4px 20px rgba(212,168,67,0.4)',
+                }}
               >
-                Submit
+                {status === 'loading' ? 'Submitting…' : 'Submit'}
               </button>
             </div>
 

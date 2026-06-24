@@ -22,6 +22,51 @@ type NavItem   = {
   noNavigate?: boolean
 }
 
+const NAV_TRANSLATIONS: Record<string, Record<string, string>> = {
+  my: {
+    'Trading':                'ရောင်းဝယ်ရေး',
+    'Promotions':             'ပရိုမိုရှင်းများ',
+    'Copy Trading':           'ကော်ပီထရေဒင်း',
+    'Partners':               'မိတ်ဖက်များ',
+    'About Us':               'ကျွန်ုပ်တို့အကြောင်း',
+    'Account Types':          'အကောင့်အမျိုးအစားများ',
+    'Instruments':            'ကိရိယာများ',
+    'Overnight Fees':         'ညဘောင်ကြေးများ',
+    'Deposits & Withdrawals': 'အပ်ငွေနှင့်ထုတ်ငွေ',
+    'Calendar':               'ပြက္ခဒိန်',
+    'Advantages':             'အားသာချက်များ',
+    'Welcome Bonus':          'ကြိုဆိုဘောနပ်စ်',
+    'Partner':                'မိတ်ဖက်',
+    'Create Your Bonus':      'ဘောနပ်စ်ဖန်တီးပါ',
+    'About DPM':              'DPM အကြောင်း',
+    'Contact Us':             'ဆက်သွယ်ရန်',
+    'Complaints':             'တိုင်ကြားချက်များ',
+    'Legal Documents':        'ဥပဒေဆိုင်ရာစာရွက်စာတမ်းများ',
+    'FAQs':                   'မေးလေ့ရှိသောမေးခွန်းများ',
+  },
+  th: {
+    'Trading':                'การซื้อขาย',
+    'Promotions':             'โปรโมชั่น',
+    'Copy Trading':           'คัดลอกการซื้อขาย',
+    'Partners':               'พันธมิตร',
+    'About Us':               'เกี่ยวกับเรา',
+    'Account Types':          'ประเภทบัญชี',
+    'Instruments':            'เครื่องมือ',
+    'Overnight Fees':         'ค่าธรรมเนียมข้ามคืน',
+    'Deposits & Withdrawals': 'ฝากและถอน',
+    'Calendar':               'ปฏิทิน',
+    'Advantages':             'ข้อดี',
+    'Welcome Bonus':          'โบนัสต้อนรับ',
+    'Partner':                'พันธมิตร',
+    'Create Your Bonus':      'สร้างโบนัสของคุณ',
+    'About DPM':              'เกี่ยวกับ DPM',
+    'Contact Us':             'ติดต่อเรา',
+    'Complaints':             'ข้อร้องเรียน',
+    'Legal Documents':        'เอกสารทางกฎหมาย',
+    'FAQs':                   'คำถามที่พบบ่อย',
+  },
+}
+
 const NAV_ITEMS: NavItem[] = [
   {
     label:  'Trading',
@@ -63,9 +108,10 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label:  'About Us',
-    href:   '/about-us',
-    align:  'right',
+    label:      'About Us',
+    href:       '/about-us',
+    align:      'right',
+    noNavigate: true,
     columns: [
       [
         { label: 'About DPM',       href: '/about-us/about-dpm' },
@@ -125,18 +171,36 @@ export default function Header() {
   const handleLanguageSelect = (lang: typeof LANGUAGES[0]) => {
     setSelectedLang(lang)
     setLangOpen(false)
+
     if (lang.code === 'en') {
-      // eslint-disable-next-line react-hooks/immutability
-      window.location.href = window.location.origin + window.location.pathname
+      // Clear googtrans cookie → reset to English
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname}`
+      window.location.reload()
       return
     }
-    const url = encodeURIComponent(window.location.href)
-    // eslint-disable-next-line react-hooks/immutability
-    window.location.href = `https://translate.google.com/translate?sl=auto&tl=${lang.code}&u=${url}`
+
+    // Set googtrans cookie — Google Translate widget reads this on load
+    document.cookie = `googtrans=/en/${lang.code}; path=/`
+    document.cookie = `googtrans=/en/${lang.code}; path=/; domain=.${window.location.hostname}`
+
+    // Trigger translate widget if already loaded, else reload
+    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null
+    if (select) {
+      select.value = lang.code
+      select.dispatchEvent(new Event('change'))
+    } else {
+      window.location.reload()
+    }
   }
 
   const isNavActive = (href: string) =>
     href !== '/' && pathname.startsWith(href)
+
+  const t = (label: string) =>
+    selectedLang.code === 'en'
+      ? label
+      : (NAV_TRANSLATIONS[selectedLang.code]?.[label] ?? label)
 
   const LIGHT_PAGES = [
     '/trading/advantages',
@@ -210,7 +274,7 @@ export default function Header() {
                           isOpen || isActive ? navActiveClass : navTextClass
                         }`}
                       >
-                        {item.label}
+                        <span translate="no">{t(item.label)}</span>
                         <ChevronDown
                           size={14}
                           strokeWidth={2.5}
@@ -229,7 +293,7 @@ export default function Header() {
                           isOpen || isActive ? navActiveClass : navTextClass
                         }`}
                       >
-                        {item.label}
+                        <span translate="no">{t(item.label)}</span>
                         {item.columns && (
                           <ChevronDown
                             size={14}
@@ -267,7 +331,7 @@ export default function Header() {
                                     href={child.href}
                                     className="block px-4 py-3 text-[15px] font-semibold text-[#2d3748] hover:text-[#0c1422] hover:bg-gray-50 rounded-2xl transition-all duration-150 whitespace-nowrap"
                                   >
-                                    {child.label}
+                                    <span translate="no">{t(child.label)}</span>
                                   </Link>
                                 ))}
                               </div>
@@ -363,7 +427,7 @@ export default function Header() {
                     >
                       <span className="flex items-center gap-2">
                         {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843] shrink-0" />}
-                        {item.label}
+                        <span translate="no">{t(item.label)}</span>
                       </span>
                       <ChevronDown
                         size={15}
@@ -389,7 +453,7 @@ export default function Header() {
                                   : 'text-white/70'
                               }`}
                             >
-                              {child.label}
+                              <span translate="no">{t(child.label)}</span>
                             </Link>
                           )
                         })}
@@ -404,7 +468,7 @@ export default function Header() {
                     }`}
                   >
                     {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843] shrink-0" />}
-                    {item.label}
+                    <span translate="no">{t(item.label)}</span>
                   </Link>
                 )}
               </div>
