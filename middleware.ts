@@ -26,6 +26,14 @@ export async function middleware(req: NextRequest) {
 
   const headers = new Headers(req.headers)
   headers.set('host', 'my.dpmtrade.com')
+
+  // Rewrite origin/referer so the auth system doesn't detect a proxy
+  headers.set('origin', 'https://my.dpmtrade.com')
+  const referer = req.headers.get('referer')
+  if (referer) {
+    headers.set('referer', referer.replace(req.nextUrl.origin, UPSTREAM))
+  }
+
   headers.delete('x-forwarded-host')
   headers.delete('x-forwarded-for')
 
