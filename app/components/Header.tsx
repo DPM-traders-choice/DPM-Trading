@@ -172,19 +172,37 @@ export default function Header() {
     setSelectedLang(lang)
     setLangOpen(false)
 
+    const host    = window.location.hostname
+    const expired = 'expires=Thu, 01 Jan 1970 00:00:00 UTC'
+
+    const clearGoogTrans = () => {
+      document.cookie = `googtrans=; ${expired}; path=/`
+      document.cookie = `googtrans=; ${expired}; path=/; domain=${host}`
+      document.cookie = `googtrans=; ${expired}; path=/; domain=.${host}`
+    }
+
+    const setGoogTrans = (value: string) => {
+      document.cookie = `googtrans=${value}; path=/`
+      document.cookie = `googtrans=${value}; path=/; domain=${host}`
+      document.cookie = `googtrans=${value}; path=/; domain=.${host}`
+    }
+
     if (lang.code === 'en') {
-      // Clear googtrans cookie → reset to English
-      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname}`
-      window.location.reload()
+      clearGoogTrans()
+      // If widget is active, switch it directly then reload to clear residual state
+      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null
+      if (select) {
+        select.value = 'en'
+        select.dispatchEvent(new Event('change'))
+        setTimeout(() => window.location.reload(), 300)
+      } else {
+        window.location.reload()
+      }
       return
     }
 
-    // Set googtrans cookie — Google Translate widget reads this on load
-    document.cookie = `googtrans=/en/${lang.code}; path=/`
-    document.cookie = `googtrans=/en/${lang.code}; path=/; domain=.${window.location.hostname}`
+    setGoogTrans(`/en/${lang.code}`)
 
-    // Trigger translate widget if already loaded, else reload
     const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null
     if (select) {
       select.value = lang.code
