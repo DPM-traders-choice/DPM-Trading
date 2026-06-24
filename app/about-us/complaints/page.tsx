@@ -44,10 +44,10 @@ export default function ComplaintsPage() {
             Should you find something dissatisfying or wish to make a complaint of any nature with
             regards to our service provided please feel free to reach out to us at{' '}
             <a
-              href="mailto:complaints@bbsmarkets.com"
+              href="mailto:DPM@bbsmarkets.com"
               className="text-blue-600 font-semibold hover:underline"
             >
-              complaints@bbsmarkets.com
+              DPM@bbsmarkets.com
             </a>
             .
           </p>
