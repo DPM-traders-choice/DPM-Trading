@@ -62,7 +62,7 @@ const INSTRUMENTS = [
     label: 'Digital Assets',
     title: 'CFDs Crypto',
     dir: 'from-bottom',
-    description: 'Crypto Currencies have been with us for more than a decade and are as popular as ever. Trade the most commonly used Cryptos via BBS Markets.',
+    description: 'Crypto Currencies have been with us for more than a decade and are as popular as ever. Trade the most commonly used Cryptos via DPM Markets.',
     dark: false,
     bg: '#EEF2F8',
     glow: '',

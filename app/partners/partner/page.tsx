@@ -62,9 +62,9 @@ export default function PartnerPage() {
             className="banner-item text-base md:text-lg text-slate-500 font-normal max-w-2xl leading-relaxed"
             style={{ '--i': 2 } as React.CSSProperties}
           >
-            The BBS Markets Partner program is designed to suit all partner types. If you want to earn
+            The DPM Markets Partner program is designed to suit all partner types. If you want to earn
             a guaranteed income by attracting (be it online or offline) potential clients (or partners)
-            to BBS Markets simply register below and our experienced Business Developers will reach out
+            to DPM Markets simply register below and our experienced Business Developers will reach out
             to assist you in maximizing your partnership potential.
           </p>
 
@@ -72,7 +72,7 @@ export default function PartnerPage() {
             className="banner-item text-base md:text-lg text-slate-500 font-normal max-w-2xl leading-relaxed"
             style={{ '--i': 3 } as React.CSSProperties}
           >
-            Whether you are an individual or a business, the BBS Markets Partner Program offers
+            Whether you are an individual or a business, the DPM Markets Partner Program offers
             flexible models, competitive rewards, and full support. Join our global partner network
             and start building a long-term income.
           </p>

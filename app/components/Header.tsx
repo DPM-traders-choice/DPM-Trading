@@ -35,6 +35,7 @@ const NAV_TRANSLATIONS: Record<string, Record<string, string>> = {
     'Deposits & Withdrawals': 'အပ်ငွေနှင့်ထုတ်ငွေ',
     'Calendar':               'ပြက္ခဒိန်',
     'Advantages':             'အားသာချက်များ',
+    'MT5':                    'MT5',
     'Welcome Bonus':          'ကြိုဆိုဘောနပ်စ်',
     'Partner':                'မိတ်ဖက်',
     'Create Your Bonus':      'ဘောနပ်စ်ဖန်တီးပါ',
@@ -56,6 +57,7 @@ const NAV_TRANSLATIONS: Record<string, Record<string, string>> = {
     'Deposits & Withdrawals': 'ฝากและถอน',
     'Calendar':               'ปฏิทิน',
     'Advantages':             'ข้อดี',
+    'MT5':                    'MT5',
     'Welcome Bonus':          'โบนัสต้อนรับ',
     'Partner':                'พันธมิตร',
     'Create Your Bonus':      'สร้างโบนัสของคุณ',
@@ -81,6 +83,7 @@ const NAV_ITEMS: NavItem[] = [
       [
         { label: 'Calendar',   href: '/trading/calendar' },
         { label: 'Advantages', href: '/trading/advantages' },
+        { label: 'MT5',        href: '/trading/mt5' },
       ],
     ],
   },

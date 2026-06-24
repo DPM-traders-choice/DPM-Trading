@@ -40,7 +40,7 @@ const ACCOUNT_TYPES = [
       { label: 'Swap Free*', value: 'Yes' },
       { label: 'Minimum Deposit', value: '$1000' },
       { label: 'Base Currency', value: 'EUR, USD' },
-      { label: 'Commissions', value: '$0' },
+      { label: 'Commissions', value: '$5' },
       { label: 'Leverage****', value: 'up to 1:1000' },
       { label: 'Execution Model', value: 'Market Execution' },
       { label: 'Platforms', value: 'Webtrader, Mobile App, Desktop' },

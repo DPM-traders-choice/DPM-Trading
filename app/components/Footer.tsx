@@ -153,11 +153,11 @@ export default function Footer() {
 
         {/* Risk disclaimer */}
         <div className="py-6 flex flex-col gap-4">
-          <p className="text-[11px] text-white/20 leading-relaxed">
-            <span className="font-semibold text-white/30">Risk Warning:</span> Trading Leveraged Products such as Forex and Derivatives may not be suitable for all investors as they carry a high degree of risk to your capital. Please ensure that you fully understand the risks involved, taking into account your investments objectives and level of experience, before trading, and if necessary, seek independent advice. Please read the full Risk Disclosure.
+          <p className="text-[11px] text-white/50 leading-relaxed">
+            <span className="font-semibold text-white/70">Risk Warning:</span> Trading Leveraged Products such as Forex and Derivatives may not be suitable for all investors as they carry a high degree of risk to your capital. Please ensure that you fully understand the risks involved, taking into account your investments objectives and level of experience, before trading, and if necessary, seek independent advice. Please read the full Risk Disclosure.
           </p>
-          <p className="text-[11px] text-white/20 leading-relaxed">
-            Regional Restrictions: DPM Markets does not provide services to residents of the USA, Sudan, Syria, North Korea.
+          <p className="text-[11px] text-white/50 leading-relaxed">
+            <span className="font-semibold text-white/70">Regional Restrictions:</span> DPM Markets does not provide services to residents of the USA, Sudan, Syria, North Korea.
           </p>
         </div>
 

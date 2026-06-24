@@ -14,7 +14,7 @@ const TABS = {
         n: '1',
         title: 'Sign Up',
         body: (
-          <><strong>Register a BBS Markets Account</strong> and open any MT5 Trading Account</>
+          <><strong>Register a DPM Markets Account</strong> and open any MT5 Trading Account</>
         ),
       },
       {
@@ -42,7 +42,7 @@ const TABS = {
         n: '1',
         title: 'Sign Up',
         body: (
-          <><strong>Register a BBS Markets Account</strong> and open any MT5 Trading Account</>
+          <><strong>Register a DPM Markets Account</strong> and open any MT5 Trading Account</>
         ),
       },
       {
@@ -304,9 +304,9 @@ export default function CopyTradingPage() {
               Advanced Copy Trading Settings
             </h2>
             <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-              BBS Market&apos;s Copy Trading system offers Followers complete flexibility to customize their
+              DPM Markets&apos; Copy Trading system offers Followers complete flexibility to customize their
               strategy, manage risk levels, and choose their preferred copying style. Whether you are following
-              trading signals or adjusting risk exposure, BBS Market allows you to fine-tune every setting to
+              trading signals or adjusting risk exposure, DPM Markets allows you to fine-tune every setting to
               match your objectives.
             </p>
           </div>
