@@ -5,27 +5,27 @@ import { useEffect, useRef, useState } from 'react'
 
 const FAQS = [
   {
-    q: 'What Is DPM Markets MT5?',
-    a: 'DPM Markets MT5 is a powerful multi-asset trading platform available on desktop, web, and mobile, offering advanced charting, real-time execution, and full strategy support.',
+    q: 'What Is MT5?',
+    a: 'MT5 is a powerful multi-asset trading platform available on desktop, web, and mobile, offering advanced charting, real-time execution, and full strategy support.',
   },
   {
-    q: 'Which Devices Are Compatible With DPM Markets MT5?',
-    a: 'You can trade using DPM Markets MT5 on Windows, MacOS, Android, and iOS, ensuring seamless access across desktop and mobile devices.',
+    q: 'Which Devices Are Compatible With MT5?',
+    a: 'You can trade using MT5 on Windows, MacOS, Android, and iOS, ensuring seamless access across desktop and mobile devices.',
   },
   {
-    q: 'Can I Use Automated Trading On DPM Markets MT5?',
+    q: 'Can I Use Automated Trading On MT5?',
     a: 'Yes! MT5 supports Expert Advisors (EAs), custom indicators, and automated strategies to help you trade efficiently.',
   },
   {
-    q: 'How Secure Is Trading On DPM Markets MT5?',
-    a: 'DPM Markets MT5 uses segregated client funds, encrypted data, and secure servers, providing a safe and reliable trading environment.',
+    q: 'How Secure Is Trading On MT5?',
+    a: 'MT5 uses segregated client funds, encrypted data, and secure servers, providing a safe and reliable trading environment.',
   },
   {
-    q: 'What Instruments Can I Trade On DPM Markets MT5?',
+    q: 'What Instruments Can I Trade On MT5?',
     a: 'You can access Forex, Commodities, Indices, Futures, Metals, and more, all within a single MT5 account.',
   },
   {
-    q: 'Does DPM Markets MT5 Offer Real-Time Charts And Analysis Tools?',
+    q: 'Does MT5 Offer Real-Time Charts And Analysis Tools?',
     a: 'Absolutely. MT5 provides advanced charts, technical indicators, and market analysis tools to support every trading strategy.',
   },
 ]
@@ -33,7 +33,7 @@ const FAQS = [
 const PLATFORMS = [
   {
     label: 'For Windows',
-    desc: 'Download DPM Markets MT5 for Windows and enjoy fast, stable, and fully-featured trading with advanced charts and strategy support.',
+    desc: 'Download MT5 for Windows and enjoy fast, stable, and fully-featured trading with advanced charts and strategy support.',
     btnLabel: 'Download',
     btnIcon: 'windows',
     dark: true,
@@ -61,7 +61,7 @@ const PLATFORMS = [
   },
   {
     label: 'For MacOS',
-    desc: 'Get DPM Markets MT5 on MacOS for smooth, reliable trading with complete tools and real-time market access.',
+    desc: 'Get MT5 on MacOS for smooth, reliable trading with complete tools and real-time market access.',
     btnLabel: 'Download',
     btnIcon: 'apple',
     dark: true,
@@ -75,7 +75,7 @@ const PLATFORMS = [
   },
   {
     label: 'For Android',
-    desc: 'Trade anywhere with DPM Markets MT5 for Android, offering precise charts, full strategy capabilities, and real-time execution.',
+    desc: 'Trade anywhere with MT5 for Android, offering precise charts, full strategy capabilities, and real-time execution.',
     btnLabel: 'Download',
     btnIcon: 'android',
     dark: true,
@@ -89,7 +89,7 @@ const PLATFORMS = [
   },
   {
     label: 'For Apple (IOS)',
-    desc: 'Download DPM Markets MT5 for iPhone and iPad for seamless, on-the-go trading with advanced tools and stable performance.',
+    desc: 'Download MT5 for iPhone and iPad for seamless, on-the-go trading with advanced tools and stable performance.',
     btnLabel: 'Download',
     btnIcon: 'apple',
     dark: true,
@@ -436,13 +436,13 @@ export default function MT5Page() {
           </p>
 
           <div className="at-item flex flex-col items-start gap-2 mt-2" style={{ '--i': 2 } as React.CSSProperties}>
-            <p className="text-blue-400 font-semibold text-sm tracking-widest uppercase mb-2">DPM MT5 features include:</p>
+            <p className="text-blue-400 font-semibold text-sm tracking-widest uppercase mb-2">MT5 features include:</p>
             {[
               'Interbank sourced Liquidity.',
               '50+ Technical Indicators and Tools.',
               'Spreads starting from 0 pips.',
               'EA, Hedging, Scalping friendly.',
-              'Market Execution (NO Slippage, NO Re-quotes).',
+              'Fast Market Execution.',
               'View Multiple Charts Simultaneously.',
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2.5">

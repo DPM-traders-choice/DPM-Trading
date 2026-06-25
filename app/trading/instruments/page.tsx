@@ -62,7 +62,7 @@ const INSTRUMENTS = [
     label: 'Digital Assets',
     title: 'CFDs Crypto',
     dir: 'from-bottom',
-    description: 'Crypto Currencies have been with us for more than a decade and are as popular as ever. Trade the most commonly used Cryptos via DPM Markets.',
+    description: 'Crypto Currencies have been with us for more than a decade and are as popular as ever. Trade the most commonly used Cryptos via DPM.',
     dark: false,
     bg: '#EEF2F8',
     glow: '',
@@ -110,8 +110,8 @@ export default function InstrumentsPage() {
       >
         <div className="max-w-7xl mx-auto w-full flex flex-col items-center text-center gap-6">
 
-          <p className="banner-item text-sm font-bold tracking-[0.18em] uppercase text-blue-500" style={{ '--i': 0 } as React.CSSProperties}>
-            BBS Market
+          <p className="banner-item text-base md:text-lg font-bold tracking-[0.18em] uppercase text-blue-500" style={{ '--i': 0 } as React.CSSProperties}>
+            DPM
           </p>
 
           <h2

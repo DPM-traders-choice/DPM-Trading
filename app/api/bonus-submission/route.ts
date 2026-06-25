@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   const text = [
     '🎁 *New Bonus Submission*',
     '',
-    `📋 *DPM Markets ID:* ${bbsId}`,
+    `📋 *DPM ID:* ${bbsId}`,
     `🏷️ *Bonus Name:* ${bonusName}`,
     `💵 *Cash Back:* ${flag(cashBack)}`,
     `📉 *Loseable:* ${flag(loseable)}`,

@@ -14,7 +14,7 @@ const TABS = {
         n: '1',
         title: 'Sign Up',
         body: (
-          <><strong>Register a DPM Markets Account</strong> and open any MT5 Trading Account</>
+          <><strong>Register a DPM Account</strong> and open any MT5 Trading Account</>
         ),
       },
       {
@@ -42,7 +42,7 @@ const TABS = {
         n: '1',
         title: 'Sign Up',
         body: (
-          <><strong>Register a DPM Markets Account</strong> and open any MT5 Trading Account</>
+          <><strong>Register a DPM Account</strong> and open any MT5 Trading Account</>
         ),
       },
       {
@@ -231,7 +231,7 @@ export default function CopyTradingPage() {
               className="banner-item text-sm font-bold tracking-[0.18em] uppercase text-blue-500"
               style={{ '--i': 0 } as React.CSSProperties}
             >
-              DPM Markets
+              DPM
             </p>
 
             <h1
@@ -304,9 +304,9 @@ export default function CopyTradingPage() {
               Advanced Copy Trading Settings
             </h2>
             <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-              DPM Markets&apos; Copy Trading system offers Followers complete flexibility to customize their
+              DPM&apos; Copy Trading system offers Followers complete flexibility to customize their
               strategy, manage risk levels, and choose their preferred copying style. Whether you are following
-              trading signals or adjusting risk exposure, DPM Markets allows you to fine-tune every setting to
+              trading signals or adjusting risk exposure, DPM allows you to fine-tune every setting to
               match your objectives.
             </p>
           </div>

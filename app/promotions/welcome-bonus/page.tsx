@@ -130,7 +130,7 @@ export default function WelcomeBonusPage() {
               Amplify your trading potential with a 20% Margin Bonus on us!
             </p>
             <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-              DPM Markets is pleased to offer its Clients a Margin bonus Account to help them start
+              DPM is pleased to offer its Clients a Margin bonus Account to help them start
               their trading journey. Claim yours today through your members area.
             </p>
             <ul className="flex flex-col gap-3">
@@ -212,7 +212,7 @@ export default function WelcomeBonusPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
             {[
-              { n: '01', body: 'Log in to your DPM Markets account or register a new one.' },
+              { n: '01', body: 'Log in to your DPM account or register a new one.' },
               { n: '02', body: 'Make a minimum deposit of $100 to qualify for the bonus.' },
               { n: '03', body: 'Access your Members Area, select the 20% Bonus Account type, and activate it.' },
               { n: '04', body: 'The bonus is credited instantly—start trading with increased margin right away.' },
@@ -265,13 +265,13 @@ export default function WelcomeBonusPage() {
 
           <div className="wb-reveal flex flex-col gap-6" style={{ ['--d' as string]: '150ms' }}>
             <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-              Unlock extra trading power with DPM Markets by taking advantage of our 20% Welcome Bonus.
+              Unlock extra trading power with DPM by taking advantage of our 20% Welcome Bonus.
               This promotion is available to both new and existing clients with specific Welcome bonus trading
               accounts in any supported currency, allowing you to enhance your margin and trading potential from the start.
             </p>
             <p className="text-base md:text-lg text-gray-500 leading-relaxed">
               Clients can receive up to $500 in bonus credit with a minimum deposit of $100. The bonus applies
-              to all DPM Markets trading instruments. Terms and Conditions apply please review them carefully
+              to all DPM trading instruments. Terms and Conditions apply please review them carefully
               to ensure eligibility before participating in this offer.
             </p>
             <div>

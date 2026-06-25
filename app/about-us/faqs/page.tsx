@@ -32,7 +32,7 @@ const FAQS_ABOUT = [
 const FAQS_SUPPORT = [
   {
     q: 'How Can I Contact DPM?',
-    a: 'DPM offers 24/6 customer support to assist you throughout your trading journey. Our multilingual support team is available via email at support@bbsmarkets.com.',
+    a: 'DPM offers 24/6 customer support to assist you throughout your trading journey. Our multilingual support team is available via email at DPM@bbsmarkets.com.',
   },
   {
     q: 'What Are Support Operating Hours?',
@@ -44,32 +44,6 @@ const FAQS_SUPPORT = [
   },
 ]
 
-const FAQS_REGULATORY = [
-  {
-    q: 'What Legal Documents Does DPM Provide?',
-    a: 'DPM provides Terms of Service, Privacy Policy, Bonus Program Conditions, and other relevant regulatory documents for clients and partners.',
-  },
-  {
-    q: 'Why Should I Read The Terms Of Service?',
-    a: 'The Terms of Service outline your rights and responsibilities when using the DPM platform, ensuring transparency and compliance.',
-  },
-  {
-    q: 'What Is Covered In The Privacy Policy?',
-    a: 'The Privacy Policy explains how DPM collects, uses, and protects personal data, as well as your rights regarding that information.',
-  },
-  {
-    q: 'Are Bonus Program Conditions Legally Binding?',
-    a: "Yes. Bonus Program Conditions form part of DPM's legal framework and must be followed to participate in promotional offers.",
-  },
-  {
-    q: 'How Often Are Legal Documents Updated?',
-    a: 'DPM regularly reviews and updates all legal and regulatory documents to ensure ongoing compliance.',
-  },
-  {
-    q: 'Where Can I Access Regulatory Documents?',
-    a: 'All legal, licensing, and compliance documents are available on the Legal & Regulatory page of the DPM website.',
-  },
-]
 
 const FAQS_ACCOUNT = [
   {
@@ -82,7 +56,7 @@ const FAQS_ACCOUNT = [
   },
   {
     q: 'What Account Types Are Available?',
-    a: 'DPM offers multiple account types to suit different trading needs and experience levels:\n\nStandard Account: $1 minimum deposit, zero commission, leverage up to 1:5000. Ideal for beginners.\nVIP Account: $1,000 minimum deposit, $5 commission, tighter spreads. Suitable for active or professional traders.\nBonus (Bull) Account: $1 minimum deposit, $7 commission, leverage up to 1:100, includes promotional bonuses.\nCENT Account: $10 minimum deposit, zero commission, leverage up to 1:5000. Designed for smaller trades with better risk control and flexible trading.',
+    a: 'DPM offers multiple account types to suit different trading needs and experience levels:\n\nStandard Account: $1 minimum deposit, zero commission, leverage up to 1:5000. Ideal for beginners.\nVIP Account: $1,000 minimum deposit, $7 commission, tighter spreads. Suitable for active or professional traders.\nBonus (Bull) Account: $10 minimum deposit, $7 commission, leverage up to 1:100, includes promotional bonuses.\nCENT Account: $10 minimum deposit, zero commission, leverage up to 1:5000. Designed for smaller trades with better risk control and flexible trading.',
   },
   {
     q: 'Are Swap Fees Charged On Overnight Positions?',
@@ -190,7 +164,6 @@ function FaqItem({
 export default function FAQsPage() {
   const [openAbout, setOpenAbout] = useState<number>(-1)
   const [openAccount, setOpenAccount] = useState<number>(-1)
-  const [openRegulatory, setOpenRegulatory] = useState<number>(-1)
   const [openSupport, setOpenSupport] = useState<number>(-1)
 
   return (
@@ -243,24 +216,6 @@ export default function FAQsPage() {
                 index={i}
                 isOpen={openSupport === i}
                 onToggle={() => setOpenSupport(openSupport === i ? -1 : i)}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Regulatory Documents section */}
-        <div className="mt-20">
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#101829] mb-10">
-            Regulatory Documents
-          </h2>
-          <div className="flex flex-col">
-            {FAQS_REGULATORY.map((faq, i) => (
-              <FaqItem
-                key={i}
-                faq={faq}
-                index={i}
-                isOpen={openRegulatory === i}
-                onToggle={() => setOpenRegulatory(openRegulatory === i ? -1 : i)}
               />
             ))}
           </div>

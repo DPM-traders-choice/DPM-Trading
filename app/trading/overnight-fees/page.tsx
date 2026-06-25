@@ -28,7 +28,7 @@ export default function OvernightFeesPage() {
               className="of-item text-gray-500 mb-6 text-base lg:mb-8 lg:text-lg leading-relaxed max-w-lg"
               style={{ '--i': 1 } as React.CSSProperties}
             >
-              Trading positions may be rolled overnight. This is the process whereby your open position has its settlement date extended. At DPM Markets you may keep your positions open as per the company&apos;s Terms and Conditions.
+              Trading positions may be rolled overnight. This is the process whereby your open position has its settlement date extended. At DPM you may keep your positions open as per the company&apos;s Terms and Conditions.
             </p>
 
             <Link
@@ -76,10 +76,10 @@ export default function OvernightFeesPage() {
 
           {/* Header */}
           <div className="flex flex-col items-center text-center gap-4 max-w-3xl">
-            <p className="text-xl font-bold text-blue-500">DPM Markets</p>
+            <p className="text-xl font-bold text-blue-500">DPM</p>
             <h2 className="text-gray-900 text-2xl font-black md:text-4xl lg:text-5xl leading-tight">Top-Tier Trading Conditions, Worldwide</h2>
             <p className="text-gray-500 text-lg lg:text-xl leading-relaxed">
-              DPM Markets&apos; transparent fees deliver competitive spreads across all instruments.
+              DPM&apos; transparent fees deliver competitive spreads across all instruments.
             </p>
           </div>
 

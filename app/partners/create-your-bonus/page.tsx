@@ -116,7 +116,7 @@ export default function CreateYourBonusPage() {
               className="banner-item text-sm font-bold tracking-[0.18em] uppercase text-blue-400"
               style={{ ['--i' as string]: 0 }}
             >
-              DPM Markets
+              DPM
             </p>
 
             <h1
@@ -130,7 +130,7 @@ export default function CreateYourBonusPage() {
               className="banner-item text-lg md:text-xl font-semibold text-white/90"
               style={{ ['--i' as string]: 2 }}
             >
-              Create Your Very Own Bonus Promotion with DPM Markets.
+              Create Your Very Own Bonus Promotion with DPM.
             </p>
 
             <p
@@ -146,7 +146,7 @@ export default function CreateYourBonusPage() {
               className="banner-item text-base text-gray-400 leading-relaxed"
               style={{ ['--i' as string]: 4 }}
             >
-              DPM Markets offers the chance to its Eligible Partners* to propose their own bespoke
+              DPM offers the chance to its Eligible Partners* to propose their own bespoke
               Bonus Promotion which will be used Exclusively** for their network.
             </p>
 
@@ -201,7 +201,7 @@ export default function CreateYourBonusPage() {
             {[
               { n: '01', body: 'Register and become an Eligible Partner.' },
               { n: '02', body: "Fill out the 'Create My Bonus Promotion' form further below." },
-              { n: '03', body: 'DPM Markets Partners Department will contact you to discuss.' },
+              { n: '03', body: 'DPM Partners Department will contact you to discuss.' },
               { n: '04', body: 'Your Bonus Promotion will be Activated Exclusively** for you.' },
             ].map((step, i) => (
               <div
@@ -260,7 +260,7 @@ export default function CreateYourBonusPage() {
             {/* Row 1 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-sm font-semibold text-gray-700 tracking-wide">DPM Markets ID</label>
+                <label className="text-sm font-semibold text-gray-700 tracking-wide">DPM Client ID</label>
                 <input
                   type="number"
                   name="bbsId"
@@ -407,7 +407,7 @@ export default function CreateYourBonusPage() {
             {/* Footnotes */}
             <div className="flex flex-col gap-1 pt-4 border-t border-gray-200">
               <p className="text-xs text-gray-500 leading-relaxed">* An Eligible Partner is one who has introduced a minimum of 5 Clients with a minimum deposit of $100 per Client.</p>
-              <p className="text-xs text-gray-500 leading-relaxed">** Exclusivity will be for a 3 month period. After which DPM Markets may or may not provide the said Bonus Promotion publicly.</p>
+              <p className="text-xs text-gray-500 leading-relaxed">** Exclusivity will be for a 3 month period. After which DPM may or may not provide the said Bonus Promotion publicly.</p>
             </div>
 
           </form>

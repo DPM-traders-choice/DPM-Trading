@@ -63,28 +63,28 @@ const PAYMENT_CARDS = [
 
 const FAQS = [
   {
-    q: 'What Deposit Methods Are Available At DPM Markets?',
-    a: 'DPM Markets offers multiple funding options, including bank wire transfers, credit and debit cards, leading e-wallets, and selected cryptocurrencies. All transactions are handled securely and processed promptly.',
+    q: 'What Deposit Methods Are Available At DPM?',
+    a: 'DPM offers multiple funding options, including bank wire transfers, credit and debit cards, leading e-wallets, and selected cryptocurrencies. All transactions are handled securely and processed promptly.',
   },
   {
-    q: 'What Is The Minimum Deposit To Start Trading With DPM Markets?',
+    q: 'What Is The Minimum Deposit To Start Trading With DPM?',
     a: 'The minimum deposit varies depending on the account type selected. Entry-level accounts require a smaller initial deposit, while higher-tier accounts may have higher minimum requirements.',
   },
   {
-    q: 'How Long Do Withdrawals Take At DPM Markets?',
-    a: 'Withdrawal requests are usually processed by DPM Markets within 1 hour. The time for funds to reach your account depends on your bank or chosen payment provider.',
+    q: 'How Long Do Withdrawals Take At DPM?',
+    a: 'Withdrawal requests are usually processed by DPM within 1 hour. The time for funds to reach your account depends on your bank or chosen payment provider.',
   },
   {
-    q: 'Does DPM Markets Charge Any Withdrawal Fees?',
-    a: 'DPM Markets does not apply withdrawal fees. However, third-party banks or payment providers may charge processing fees, so clients are advised to verify this with their provider.',
+    q: 'Does DPM Charge Any Withdrawal Fees?',
+    a: 'DPM does not apply withdrawal fees. However, third-party banks or payment providers may charge processing fees, so clients are advised to verify this with their provider.',
   },
   {
     q: 'Can I Withdraw Funds Using A Different Payment Method Than I Used To Deposit?',
-    a: 'To comply with security and regulatory requirements, withdrawals are typically processed via the same method used for the initial deposit. If this option is no longer available, DPM Markets will assist you in arranging an approved alternative solution.',
+    a: 'To comply with security and regulatory requirements, withdrawals are typically processed via the same method used for the initial deposit. If this option is no longer available, DPM will assist you in arranging an approved alternative solution.',
   },
   {
     q: 'How Can I Check The Status Of My Withdrawal Request?',
-    a: 'You can monitor your withdrawal status directly from your client portal. For additional support or real-time updates, the DPM Markets customer support team is available 24/7 to assist you.',
+    a: 'You can monitor your withdrawal status directly from your client portal. For additional support or real-time updates, the DPM customer support team is available 24/7 to assist you.',
   },
 ]
 
@@ -258,7 +258,7 @@ export default function DepositsWithdrawalsPage() {
             className="banner-item text-sm font-bold tracking-[0.18em] uppercase text-blue-500"
             style={{ '--i': 0 } as React.CSSProperties}
           >
-            DPM Markets
+            DPM
           </p>
 
           <h1
@@ -375,7 +375,7 @@ export default function DepositsWithdrawalsPage() {
             style={{ fontFamily: 'var(--font-inter)' }}
           >
             Seamless Funding Infrastructure<br />
-            At DPM Markets
+            At DPM
           </h2>
           <p className="text-gray-500 text-sm md:text-base mt-4 leading-relaxed">
             Add funds quickly and safely through trusted payment channels<br />

@@ -24,7 +24,7 @@ export default function CalendarPage() {
             className="banner-item text-sm font-bold tracking-[0.18em] uppercase text-blue-500"
             style={{ '--i': 0 } as React.CSSProperties}
           >
-            DPM Markets
+            DPM
           </p>
 
           <h1
