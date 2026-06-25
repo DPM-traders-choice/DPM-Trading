@@ -428,7 +428,7 @@ export default function MT5Page() {
             className="at-item text-left text-white font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.2] tracking-tight"
             style={{ fontFamily: 'var(--font-inter)', ['--i' as string]: 0 }}
           >
-            DPM MT5 Platform
+            MT5 Platform
           </h1>
 
           <p className="at-item text-white/65 text-base md:text-lg max-w-2xl leading-relaxed text-left" style={{ '--i': 1 } as React.CSSProperties}>
