@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono, Cormorant_Garamond, Raleway } from "next/font/google";
 import Script from "next/script";
-import Header from "@/app/components/Header";
-import CTABanner from "@/app/components/CTABanner";
-import Footer from "@/app/components/Footer";
+import SiteShell from "@/app/components/SiteShell";
 import LoadingScreen from "@/app/components/LoadingScreen";
 import ScrollReset from "@/app/components/ScrollReset";
+import RefTracker from "@/app/components/RefTracker";
 import "./globals.css";
 
 const inter = Inter({
@@ -169,6 +168,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <ScrollReset />
+        <RefTracker />
         <LoadingScreen />
 
         {/* ── Floating Telegram button ── */}
@@ -192,14 +192,7 @@ export default function RootLayout({
           </span>
         </a>
 
-        <Header />
-        <div className="flex-1 flex flex-col">
-          {children}
-        </div>
-        <div className="bg-white">
-          <CTABanner />
-        </div>
-        <Footer />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

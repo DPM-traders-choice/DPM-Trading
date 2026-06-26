@@ -1,71 +1,65 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Gift, Megaphone, BadgePercent, Users, Zap, ShieldCheck, BarChart2, UserPlus } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
-const ANNOUNCEMENTS: { icon: LucideIcon; label: string; text: string }[] = [
-  { icon: Gift,         label: 'Welcome Bonus',      text: 'Get up to $500 on your first deposit'                },
-  { icon: Megaphone,    label: 'New Promotion',       text: 'Zero-commission trading on all FX pairs this week'   },
-  { icon: BadgePercent, label: 'Deposit Bonus',       text: '50% bonus on every deposit — limited time offer'     },
-  { icon: Users,        label: 'Copy Trading',        text: 'Follow top traders and earn automatically'           },
-  { icon: Zap,          label: 'Fast Withdrawals',    text: 'Withdraw your funds in under 24 hours'               },
-  { icon: ShieldCheck,  label: 'Swap-Free Accounts',  text: 'Islamic accounts available with zero overnight fees' },
-  { icon: BarChart2,    label: 'New Instruments',     text: 'Trade gold, oil & indices with tight spreads'        },
-  { icon: UserPlus,     label: 'Refer & Earn',        text: 'Invite friends and earn $50 per successful referral' },
-]
-
-function AnnouncementItem({ icon: Icon, label, text }: typeof ANNOUNCEMENTS[0]) {
-  return (
-    <span className="inline-flex items-center gap-2 whitespace-nowrap">
-      <Icon size={12} className="text-amber-400 shrink-0" strokeWidth={2.5} />
-      <span className="text-[11px] font-light tracking-widest text-amber-300/90 uppercase">
-        {label}
-      </span>
-      <span className="text-[11px] text-white/40 font-light">
-        {text}
-      </span>
-    </span>
-  )
-}
+type Announcement = { id: string; text: string }
 
 function Divider() {
-  return (
-    <span className="mx-8 select-none text-white/15" aria-hidden>✦</span>
-  )
+  return <span className="mx-8 select-none text-white/15" aria-hidden>✦</span>
 }
 
 export default function AnnouncementBar() {
+  const pathname              = usePathname()
   const [scrolled, setScrolled] = useState(false)
+  const [items, setItems]       = useState<Announcement[]>([])
 
+  // Fetch active announcements from admin API
+  useEffect(() => {
+    fetch('/api/announcements')
+      .then(r => r.json())
+      .then(setItems)
+      .catch(() => {})
+  }, [pathname])
+
+  // Track scroll position
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-  const content = ANNOUNCEMENTS.flatMap((a, i) => [
-    <AnnouncementItem key={i} {...a} />,
+
+  // Don't render on admin pages or when no announcements
+  if (pathname.startsWith('/admin')) return null
+  if (items.length === 0) return null
+
+  // Pad so there are always at least 5 entries — prevents marquee gaps when few items
+  const padded = Array.from({ length: Math.max(5, items.length) }, (_, i) => items[i % items.length])
+
+  const content = padded.flatMap((a, i) => [
+    <span key={i} className="inline-flex items-center gap-2 whitespace-nowrap">
+      <span className="text-amber-400 text-xs">✦</span>
+      <span className="text-[11px] text-white/70 font-light">{a.text}</span>
+    </span>,
     <Divider key={`d${i}`} />,
   ])
 
   return (
     <div
-      className="fixed left-0 right-0 z-40 overflow-hidden transition-colors duration-300"
+      className="fixed left-0 right-0 z-40 overflow-hidden transition-all duration-500"
       style={{
         top: 'var(--header-height, 88px)',
-        height: '34px',
-        background: scrolled ? '#07101f' : 'transparent',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
+        height: scrolled ? '34px' : '0px',
+        opacity: scrolled ? 1 : 0,
+        background: '#07101f',
         borderBottom: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       {/* Fade edges */}
-      {scrolled && <>
-        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(90deg, #07101f 40%, transparent)' }} />
-        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: 'linear-gradient(270deg, #07101f 40%, transparent)' }} />
-      </>}
+      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(90deg, #07101f 40%, transparent)' }} />
+      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(270deg, #07101f 40%, transparent)' }} />
 
       <div className="flex items-center h-full">
         <div className="marquee-track flex items-center">

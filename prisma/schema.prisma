@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Announcement {
+  id        String   @id @default(cuid())
+  text      String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model SocialTraffic {
+  platform String @id
+  count    Int    @default(0)
+}
+
+model BonusContent {
+  id           String   @id @default("main")
+  heading      String   @default("Trade Bigger with a 20% Margin Bonus")
+  subheading   String   @default("Amplify your trading potential with a 20% Margin Bonus on us!")
+  bodyText     String   @default("DPM is pleased to offer its Clients a Margin bonus Account to help them start their trading journey. Claim yours today through your members area.")
+  bullets      String[] @default(["Get instantly 20% extra Credit to trade with.", "Your 20% Bonus may be lost.", "Claim up to $500."])
+  cardLabel    String   @default("Welcome Bonus")
+  cardPercent  String   @default("20%")
+  cardDesc     String   @default("A bonus is more than a perk. It's a trading advantage that boosts your profits when the markets move with you.")
+  cardFeatures String[] @default(["Up to $500 bonus credit", "Commission-free trading", "Available on all account types"])
+  updatedAt    DateTime @updatedAt
+}

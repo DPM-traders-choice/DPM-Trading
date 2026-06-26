@@ -22,6 +22,20 @@ function resolveUpstreamUrl(req: NextRequest): string {
 }
 
 export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl
+
+  // Admin routes — handle entirely here, never proxy
+  if (pathname.startsWith('/admin')) {
+    if (pathname.startsWith('/admin/login')) {
+      return NextResponse.next()
+    }
+    const session = req.cookies.get('admin_session')
+    if (!session?.value) {
+      return NextResponse.redirect(new URL('/admin/login', req.url))
+    }
+    return NextResponse.next()
+  }
+
   const targetUrl = resolveUpstreamUrl(req)
 
   const headers = new Headers(req.headers)
@@ -70,14 +84,11 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
+    '/admin/:path*',
     '/login',
     '/register',
     '/my/:path*',
     '/profile',
     '/profile/:path*',
-    // Add more auth paths here as needed:
-    // '/dashboard', '/dashboard/:path*',
-    // '/settings',  '/settings/:path*',
-    // '/verify',    '/forgot-password', '/reset-password',
   ],
 }
