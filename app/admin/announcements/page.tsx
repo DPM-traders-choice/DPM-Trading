@@ -65,18 +65,18 @@ export default function AdminAnnouncements() {
   const activeCount = list.filter(a => a.active).length
 
   return (
-    <div className="min-h-screen p-8 md:p-10" style={{ background: '#070d1a' }}>
+    <div className="min-h-screen p-5 md:p-8 lg:p-10" style={{ background: '#070d1a' }}>
 
       {/* ── Page Header ── */}
-      <div className="flex items-start justify-between mb-10">
+      <div className="flex items-start justify-between mb-8 md:mb-10">
         <div>
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2 mb-2">
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-blue-400">Admin</span>
             <span className="text-white/15 text-xs">›</span>
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-white/30">Announcements</span>
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight">Announcements</h1>
-          <p className="text-sm text-white/30 mt-1">Manage marquee messages shown below the site header.</p>
+          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">Announcements</h1>
+          <p className="text-xs md:text-sm text-white/30 mt-1">Manage marquee messages shown below the site header.</p>
         </div>
 
         {/* Live count pill */}
@@ -171,10 +171,10 @@ export default function AdminAnnouncements() {
       ) : (
         <div className="flex flex-col gap-3">
           {/* Column labels */}
-          <div className="flex items-center gap-4 px-5 pb-1">
+          <div className="hidden md:flex items-center gap-4 px-5 pb-1">
             <div className="w-10 shrink-0" />
             <p className="flex-1 text-[10px] font-bold tracking-[0.2em] uppercase text-white/20">Message</p>
-            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/20 w-32 text-right hidden md:block">Published</p>
+            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/20 w-32 text-right">Published</p>
             <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/20 w-16 text-center">Status</p>
             <div className="w-8 shrink-0" />
           </div>
@@ -182,7 +182,7 @@ export default function AdminAnnouncements() {
           {list.map((item, idx) => (
             <div
               key={item.id}
-              className="group flex items-center gap-4 rounded-2xl px-5 py-4 transition-all duration-300"
+              className="group flex items-center gap-3 md:gap-4 rounded-2xl px-4 md:px-5 py-4 transition-all duration-300"
               style={{
                 background: item.active
                   ? 'linear-gradient(135deg, rgba(37,99,235,0.08), rgba(96,165,250,0.04))'

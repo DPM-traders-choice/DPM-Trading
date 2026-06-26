@@ -83,17 +83,17 @@ function CopyLinkRow({ platform, color, icon }: { platform: string; color: strin
 
   return (
     <div
-      className="group flex items-center gap-3 rounded-xl px-4 py-3 transition-all duration-200"
+      className="group flex items-center gap-2.5 rounded-xl px-3 md:px-4 py-3 transition-all duration-200"
       style={{
         background: 'rgba(255,255,255,0.025)',
         border: '1px solid rgba(255,255,255,0.06)',
       }}
     >
       <span style={{ color }} className="shrink-0">{icon}</span>
-      <span className="flex-1 text-xs text-white/35 font-mono truncate">{url}</span>
+      <span className="flex-1 text-[11px] md:text-xs text-white/35 font-mono truncate min-w-0">{url}</span>
       <button
         onClick={handleCopy}
-        className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200"
+        className="shrink-0 flex items-center gap-1 md:gap-1.5 px-2.5 md:px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200"
         style={copied
           ? { background: 'rgba(34,197,94,0.12)', color: '#4ade80', border: '1px solid rgba(34,197,94,0.22)' }
           : { background: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.08)' }
@@ -149,22 +149,22 @@ function StatCard({ p, count, pct, rank }: { p: typeof PLATFORMS[0]; count: numb
       />
 
       {/* Icon + label */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2.5">
         <div
-          className="w-11 h-11 rounded-xl flex items-center justify-center"
+          className="w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center shrink-0"
           style={{ background: `${p.color}20`, color: p.color, boxShadow: `0 0 16px ${p.glow}` }}
         >
           {p.icon}
         </div>
-        <div>
-          <p className="text-sm font-bold text-white/80">{p.label}</p>
-          <p className="text-[10px] text-white/25 font-medium tracking-wide">Social traffic</p>
+        <div className="min-w-0">
+          <p className="text-xs md:text-sm font-bold text-white/80 truncate">{p.label}</p>
+          <p className="text-[9px] md:text-[10px] text-white/25 font-medium tracking-wide hidden sm:block">Social traffic</p>
         </div>
       </div>
 
       {/* Count */}
       <div>
-        <p className="text-4xl font-black text-white tracking-tight">{count.toLocaleString()}</p>
+        <p className="text-3xl md:text-4xl font-black text-white tracking-tight">{count.toLocaleString()}</p>
         <p className="text-xs text-white/30 mt-0.5">visits</p>
       </div>
 
@@ -214,29 +214,29 @@ export default function AdminDashboard() {
     : PLATFORMS
 
   return (
-    <div className="p-8 md:p-10 min-h-screen" style={{ background: '#070d1a' }}>
+    <div className="p-5 md:p-8 lg:p-10 min-h-screen" style={{ background: '#070d1a' }}>
 
       {/* ── Header ── */}
-      <div className="flex items-start justify-between mb-12">
+      <div className="flex items-start justify-between mb-8 md:mb-12">
         <div>
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2 mb-2">
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-blue-400">Admin</span>
             <span className="text-white/15 text-xs">›</span>
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-white/30">Dashboard</span>
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight">Dashboard</h1>
-          <p className="text-sm text-white/30 mt-1">Social media traffic overview.</p>
+          <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight">Dashboard</h1>
+          <p className="text-xs md:text-sm text-white/30 mt-1">Social media traffic overview.</p>
         </div>
 
         <button
           onClick={() => { setLoading(true); fetch('/api/track').then(r => r.json()).then(d => { setData(d); setLoading(false) }) }}
-          className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 shrink-0"
           style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.08)' }}
         >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
           </svg>
-          Refresh
+          <span className="hidden sm:inline">Refresh</span>
         </button>
       </div>
 
@@ -252,40 +252,39 @@ export default function AdminDashboard() {
         <>
           {/* ── Total Banner ── */}
           <div
-            className="relative rounded-2xl p-6 mb-8 overflow-hidden"
+            className="relative rounded-2xl p-5 md:p-6 mb-6 md:mb-8 overflow-hidden"
             style={{
               background: 'linear-gradient(135deg, rgba(37,99,235,0.12), rgba(96,165,250,0.05))',
               border: '1px solid rgba(96,165,250,0.18)',
             }}
           >
-            {/* Glow */}
             <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full pointer-events-none"
               style={{ background: 'rgba(59,130,246,0.2)', filter: 'blur(50px)' }} />
 
-            <div className="relative flex items-center justify-between">
-              <div className="flex items-center gap-5">
+            <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+              <div className="flex items-center gap-4">
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shrink-0"
                   style={{ background: 'rgba(96,165,250,0.15)', boxShadow: '0 0 24px rgba(96,165,250,0.3)' }}
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
                     <path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>
                   </svg>
                 </div>
                 <div>
-                  <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-blue-400/70 mb-1">Total Social Visits</p>
-                  <p className="text-5xl font-black text-white tracking-tight">{data.total.toLocaleString()}</p>
+                  <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-blue-400/70 mb-1">Total Social Visits</p>
+                  <p className="text-4xl md:text-5xl font-black text-white tracking-tight">{data.total.toLocaleString()}</p>
                 </div>
               </div>
 
-              {/* Mini breakdown */}
-              <div className="hidden md:flex items-center gap-6">
+              {/* Mini breakdown — 2×2 on mobile, row on desktop */}
+              <div className="grid grid-cols-4 sm:flex sm:items-center gap-3 sm:gap-6">
                 {PLATFORMS.map(p => (
                   <div key={p.key} className="flex flex-col items-center gap-1">
                     <span style={{ color: p.color }}>{p.icon}</span>
-                    <span className="text-sm font-black text-white">{(data[p.key] ?? 0).toLocaleString()}</span>
-                    <span className="text-[10px] text-white/25">{p.label}</span>
+                    <span className="text-xs md:text-sm font-black text-white">{(data[p.key] ?? 0).toLocaleString()}</span>
+                    <span className="text-[9px] md:text-[10px] text-white/25 hidden sm:block">{p.label}</span>
                   </div>
                 ))}
               </div>
@@ -293,7 +292,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* ── Platform Cards ── */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-10">
             {sorted.map((p, i) => {
               const count = data[p.key] ?? 0
               const pct = data.total > 0 ? Math.round((count / data.total) * 100) : 0
