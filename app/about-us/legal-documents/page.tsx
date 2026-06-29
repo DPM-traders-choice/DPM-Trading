@@ -41,28 +41,28 @@ export default function LegalDocumentsPage() {
             className="banner-item text-base md:text-lg text-slate-500 leading-relaxed"
             style={{ ['--i' as string]: 2 }}
           >
-            DPM operates as an independent brokerage services and client support organization serving international clients.
+            DPM ( Dynamic Prosperity Management ) operates as an independent brokerage services and client support organization serving international clients.
           </p>
 
           <p
             className="banner-item text-base md:text-lg text-slate-500 leading-relaxed"
             style={{ ['--i' as string]: 3 }}
           >
-            DPM provides client onboarding, account management support, education, business development, and customer relationship services.
+            DPM ( Dynamic Prosperity Management ) provides client onboarding, account management support, education, business development, and customer relationship services.
           </p>
 
           <p
             className="banner-item text-base md:text-lg text-slate-500 leading-relaxed"
             style={{ ['--i' as string]: 4 }}
           >
-            Trading services are provided through DPM&apos;s brokerage partners and affiliated liquidity networks. Client accounts are subject to the terms and conditions of the respective service provider.
+            Trading services are provided through DPM ( Dynamic Prosperity Management )&apos;s brokerage partners and affiliated liquidity networks. Client accounts are subject to the terms and conditions of the respective service provider.
           </p>
 
           <p
             className="banner-item text-base md:text-lg text-slate-500 leading-relaxed"
             style={{ ['--i' as string]: 5 }}
           >
-            DPM operates in accordance with the laws of its jurisdiction of incorporation.
+            DPM ( Dynamic Prosperity Management ) operates in accordance with the laws of its jurisdiction of incorporation.
           </p>
 
         </div>
