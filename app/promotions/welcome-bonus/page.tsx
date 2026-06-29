@@ -85,7 +85,9 @@ export default function WelcomeBonusPage() {
             </p>
             <div className="banner-item" style={{ ['--i' as string]: 2 }}>
               <Link
-                href="/register"
+                href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-white text-[#0B111E] hover:bg-white/90 transition-colors duration-300 px-7 py-3.5 text-base font-semibold"
               >
                 Get Your Bonus
@@ -171,7 +173,9 @@ export default function WelcomeBonusPage() {
             </ul>
             <div className="mt-2">
               <a
-                href="/register"
+                href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-[#0f1e3c] text-white hover:bg-[#1a2f5e] transition-colors duration-300 px-8 py-3.5 text-base font-semibold"
               >
                 Sign Up Now
@@ -228,7 +232,9 @@ export default function WelcomeBonusPage() {
             ))}
           </div>
           <div className="wb-reveal" style={{ ['--d' as string]: '200ms' }}>
-            <a href="/register" className="inline-flex items-center justify-center rounded-lg bg-[#0f1e3c] text-white hover:bg-[#1a2f5e] transition-colors duration-300 px-10 py-4 text-base font-semibold">
+            <a href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-lg bg-[#0f1e3c] text-white hover:bg-[#1a2f5e] transition-colors duration-300 px-10 py-4 text-base font-semibold">
               Sign Up Now
             </a>
           </div>

@@ -223,7 +223,9 @@ export default function AccountTypes() {
                     </p>
 
                     <Link
-                      href="/register"
+                      href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
                       className="flex items-center gap-1.5 text-sm font-bold w-fit mt-1 transition-all duration-300"
                       style={{ color: isHovered ? acc.accent : 'rgba(255,255,255,0.7)', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: `color 0.3s, opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 520}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay + 520}ms` }}>
                       Open Account <ArrowUpRight size={15} strokeWidth={2.5} />

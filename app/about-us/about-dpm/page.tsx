@@ -106,7 +106,9 @@ export default function AboutDPMPage() {
               their online trading.
             </p>
             <Link
-              href="/register"
+              href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="of-item w-fit flex items-center justify-center rounded-lg bg-black border border-black text-white hover:bg-gray-900 transition-colors duration-300 px-6 py-3 text-base font-medium"
               style={{ '--i': 5 } as React.CSSProperties}
             >
@@ -240,7 +242,9 @@ export default function AboutDPMPage() {
               needs in order to gain their loyalty.
             </p>
             <Link
-              href="/register"
+              href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 w-fit flex items-center justify-center rounded-lg px-6 py-3 text-base font-bold tracking-wide transition-opacity duration-200 hover:opacity-85"
               style={{ background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)', color: '#1a0f00', boxShadow: '0 4px 20px rgba(212,168,67,0.4)' }}
             >
@@ -283,7 +287,9 @@ export default function AboutDPMPage() {
               IB partnerships, Joint Venture opportunities and Affiliate opportunities.
             </p>
             <Link
-              href="/register"
+              href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-2 w-fit flex items-center justify-center rounded-lg px-6 py-3 text-base font-bold tracking-wide transition-opacity duration-200 hover:opacity-85"
               style={{ background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)', color: '#1a0f00', boxShadow: '0 4px 20px rgba(212,168,67,0.4)' }}
             >
@@ -386,7 +392,9 @@ export default function AboutDPMPage() {
             multiple asset classes.
           </p>
           <Link
-            href="/register"
+            href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
             className="mt-2 flex items-center justify-center rounded-lg px-6 py-3 text-base font-bold tracking-wide transition-opacity duration-200 hover:opacity-85"
             style={{ background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)', color: '#1a0f00', boxShadow: '0 4px 20px rgba(212,168,67,0.4)' }}
           >

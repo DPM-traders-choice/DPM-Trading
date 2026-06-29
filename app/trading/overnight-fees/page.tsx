@@ -32,7 +32,9 @@ export default function OvernightFeesPage() {
             </p>
 
             <Link
-              href="/register"
+              href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="of-item w-fit group relative flex gap-2 overflow-hidden cursor-pointer transition-colors duration-300 text-center justify-center items-center rounded-lg focus:outline-none border-solid focus:ring-4 border bg-black border-black text-white focus:ring-gray-800 hover:bg-gray-900 px-3.5 py-2.5 lg:px-4 lg:py-3 text-base lg:text-lg font-medium"
               style={{ '--i': 2 } as React.CSSProperties}
             >

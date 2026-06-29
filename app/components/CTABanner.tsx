@@ -135,7 +135,9 @@ export default function CTABanner() {
           style={{ '--cta-delay': '360ms' } as React.CSSProperties}
         >
           <Link
-            href="/register"
+            href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-all duration-300 hover:scale-[1.04] whitespace-nowrap"
             style={{
               background: 'linear-gradient(135deg, #D4A843 0%, #B8882A 100%)',

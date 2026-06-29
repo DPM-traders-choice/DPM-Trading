@@ -11,6 +11,7 @@ const SLIDES = [
     trust: 'Industry-Leading Trading Technology',
     headline: ['World Leading MT5', 'Trading Platform!'],
     cta: 'Learn More',
+    href: '/trading/mt5',
     desc: 'MetaTrader 5 delivers lightning-fast execution, intuitive navigation, and advanced charting tools, making it ideal for traders of all experience levels.',
     features: [
       ['Available on WebTrader, iOS, Android and Desktop'],
@@ -21,6 +22,8 @@ const SLIDES = [
     trust: 'Trusted by over 20 Million Traders',
     headline: ['Top Tier Brokerage', 'Conditions'],
     cta: 'Register Now',
+    href: 'https://my.dpmtrade.com/register/',
+    external: true,
     desc: null,
     features: [
       ['Withdrawals in Minutes'],
@@ -32,6 +35,7 @@ const SLIDES = [
     trust: 'Access 300+ Instruments Across 6 Asset Classes',
     headline: ['Multi Asset', 'Brokerage!'],
     cta: 'Learn More',
+    href: '/trading/instruments',
     desc: 'Trade with confidence in a powerful environment featuring seamless execution, advanced tools, and flexible conditions built for every trader and spanning a wide selection of global markets below.',
     features: [
       ['Forex', 'Futures', 'Shares'],
@@ -42,6 +46,7 @@ const SLIDES = [
     trust: 'Exclusive Offer for New Traders',
     headline: ['Start Your Trading Journey', 'With A Bonus From Us!'],
     cta: 'Learn More',
+    href: '/promotions/welcome-bonus',
     desc: null,
     features: [
       ['20% Welcome Bonus'],
@@ -209,7 +214,9 @@ export default function HeroSection() {
                 {/* CTA */}
                 <div className="flex flex-col items-start gap-1.5">
                   <Link
-                    href="/register"
+                    href={slide.href}
+                    target={slide.external ? '_blank' : undefined}
+                    rel={slide.external ? 'noopener noreferrer' : undefined}
                     className="px-5 py-2 md:px-6 md:py-2.5 text-sm md:text-base font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',

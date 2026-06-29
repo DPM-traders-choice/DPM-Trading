@@ -155,7 +155,9 @@ export default function CreateYourBonusPage() {
               style={{ ['--i' as string]: 5 }}
             >
               <Link
-                href="/register"
+                href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-white text-[#0B111E] hover:bg-white/90 transition-colors duration-300 px-7 py-3.5 text-base font-semibold"
               >
                 Get Started

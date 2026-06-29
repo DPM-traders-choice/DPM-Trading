@@ -453,7 +453,9 @@ export default function MT5Page() {
           </div>
 
           <Link
-            href="/register"
+            href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
             className="at-item mt-2 inline-flex items-center justify-center rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200 px-8 py-3 text-base font-semibold"
             style={{ '--i': 3 } as React.CSSProperties}
           >
@@ -512,8 +514,10 @@ export default function MT5Page() {
                 {/* Button */}
                 <div className="relative mt-8">
                   <a
-                    href={(p as typeof p & { downloadHref?: string }).downloadHref ?? '/register'}
-                    {...((p as typeof p & { downloadHref?: string }).downloadHref ? { download: true, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    href={(p as typeof p & { downloadHref?: string }).downloadHref ?? 'https://my.dpmtrade.com/register/'}
+                    {...((p as typeof p & { downloadHref?: string }).downloadHref
+                      ? { download: true, target: '_blank', rel: 'noopener noreferrer' }
+                      : { target: '_blank', rel: 'noopener noreferrer' })}
                     className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-80"
                     style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)' }}
                   >

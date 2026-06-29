@@ -187,7 +187,9 @@ function HowItWorksBanner() {
 
         {/* CTA */}
         <a
-          href="/register"
+          href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
           className="inline-flex items-center justify-center rounded-xl px-10 py-4 text-base font-semibold text-white transition-all duration-300 hover:opacity-90"
           style={{ background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%)', boxShadow: '0 4px 20px rgba(37,99,235,0.4)' }}
         >
@@ -259,7 +261,9 @@ export default function CopyTradingPage() {
               style={{ '--i': 3 } as React.CSSProperties}
             >
               <Link
-                href="/register"
+                href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-[#101829] text-white hover:bg-[#1a2540] transition-colors duration-300 px-7 py-3.5 text-base font-semibold"
               >
                 Sign Up Now

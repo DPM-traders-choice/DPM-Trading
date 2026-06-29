@@ -57,7 +57,9 @@ export default function CalendarPage() {
           </p>
 
           <Link
-            href="/register"
+            href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer"
             className="banner-item mt-2 group relative flex gap-2 w-fit overflow-hidden cursor-pointer transition-colors duration-300 text-center justify-center items-center rounded-lg focus:outline-none border-solid focus:ring-4 border bg-[#101829] border-[#101829] text-white focus:ring-gray-800 hover:bg-[#1a2540] px-6 py-3 text-base lg:text-lg font-medium"
             style={{ '--i': 4 } as React.CSSProperties}
           >

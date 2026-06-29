@@ -129,6 +129,11 @@ const NAV_ITEMS: NavItem[] = [
   },
 ]
 
+const AUTH_LINKS = [
+  { label: 'Login', href: 'https://my.dpmtrade.com/login/', variant: 'secondary' },
+  { label: 'Register', href: 'https://my.dpmtrade.com/register/', variant: 'primary' },
+] as const
+
 
 export default function Header() {
   const pathname = usePathname()
@@ -367,7 +372,7 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* ── Right: Language + Login ── */}
+        {/* ── Right: Language + Auth ── */}
         <div className="hidden lg:flex items-center gap-4">
 
           {/* Language dropdown */}
@@ -401,17 +406,32 @@ export default function Header() {
             )}
           </div>
 
-          <Link
-            href="/login"
-            className="px-6 py-2.5 text-sm font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-85"
-            style={{
-              background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
-              color: '#1a0f00',
-              boxShadow: '0 4px 20px rgba(212,168,67,0.45)',
-            }}
-          >
-            Login
-          </Link>
+          <div className="flex items-center gap-2">
+            {AUTH_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`px-5 py-2.5 text-sm font-bold rounded-lg transition-all duration-200 tracking-wide ${
+                  link.variant === 'primary'
+                    ? 'hover:opacity-85'
+                    : isWhite
+                      ? 'border border-[#101829]/15 text-[#101829] hover:border-[#101829]/35 hover:bg-[#101829]/5'
+                      : 'border border-white/20 text-white hover:border-white/40 hover:bg-white/10'
+                }`}
+                style={link.variant === 'primary'
+                  ? {
+                      background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
+                      color: '#1a0f00',
+                      boxShadow: '0 4px 20px rgba(212,168,67,0.45)',
+                    }
+                  : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Mobile hamburger */}
@@ -515,18 +535,29 @@ export default function Header() {
             ))}
           </div>
 
-          <div className="pt-3 pb-4">
-            <Link
-              href="/login"
-              className="block w-full py-2.5 text-center text-sm font-bold rounded-lg transition-opacity duration-200 hover:opacity-85"
-              style={{
-                background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
-                color: '#1a0f00',
-                boxShadow: '0 4px 20px rgba(212,168,67,0.45)',
-              }}
-            >
-              Login
-            </Link>
+          <div className="grid grid-cols-2 gap-2 pt-3 pb-4">
+            {AUTH_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block w-full py-2.5 text-center text-sm font-bold rounded-lg transition-all duration-200 ${
+                  link.variant === 'primary'
+                    ? 'hover:opacity-85'
+                    : 'border border-white/20 text-white hover:border-white/40 hover:bg-white/10'
+                }`}
+                style={link.variant === 'primary'
+                  ? {
+                      background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
+                      color: '#1a0f00',
+                      boxShadow: '0 4px 20px rgba(212,168,67,0.45)',
+                    }
+                  : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>

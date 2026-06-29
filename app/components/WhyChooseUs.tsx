@@ -101,7 +101,9 @@ export default function WhyChooseUs() {
                 We do not treat our Clients and Partners as numbers but strive to build sustainable long-term relationships.
               </p>
             </div>
-            <Link href="/register" className="bento-cta relative flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
+            <Link href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer" className="bento-cta relative flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
               Join Now <ArrowUpRight size={18} strokeWidth={2.5} />
             </Link>
 
@@ -139,7 +141,9 @@ export default function WhyChooseUs() {
                   Partner with a flexible bespoke partner and unlock exclusive earning opportunities.
                 </p>
               </div>
-              <Link href="/register" className="bento-cta flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
+              <Link href="https://my.dpmtrade.com/register/"
+              target="_blank"
+              rel="noopener noreferrer" className="bento-cta flex items-center gap-1.5 text-base font-bold text-white hover:text-blue-300 transition-colors duration-200 w-fit">
                 Get Started <ArrowUpRight size={18} strokeWidth={2.5} />
               </Link>
             </div>
