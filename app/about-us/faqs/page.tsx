@@ -8,10 +8,6 @@ const FAQS_ABOUT = [
     a: 'DPM is a comprehensive CFD trading provider serving retail, professional, and institutional clients. We offer access to global markets through the advanced MetaTrader 5 platform, with instruments including Forex, Commodities, Metals, Stocks, and Futures. By delivering competitive trading conditions, deep liquidity, and flexible trading styles, DPM is committed to supporting traders with reliable tools, transparent conditions, and dedicated service for long-term success.',
   },
   {
-    q: 'Is DPM A Regulated Broker?',
-    a: 'DPM operates in accordance with industry standards and applicable compliance requirements. For the most accurate and up-to-date regulatory or licensing information, please refer to our official website or contact our support team directly.',
-  },
-  {
     q: 'What Markets Can I Trade At DPM?',
     a: 'DPM provides access to a wide range of global markets, including Forex, Indices, Commodities, Metals, Energies, Equities, and Cryptocurrencies. Each market is supported by competitive pricing, deep liquidity, and fast execution to help traders diversify and capitalize on global opportunities.',
   },
@@ -56,7 +52,7 @@ const FAQS_ACCOUNT = [
   },
   {
     q: 'What Account Types Are Available?',
-    a: 'DPM offers multiple account types to suit different trading needs and experience levels:\n\nStandard Account: $1 minimum deposit, zero commission, leverage up to 1:5000. Ideal for beginners.\nVIP Account: $1,000 minimum deposit, $7 commission, tighter spreads. Suitable for active or professional traders.\nBonus (Bull) Account: $10 minimum deposit, $7 commission, leverage up to 1:100, includes promotional bonuses.\nCENT Account: $10 minimum deposit, zero commission, leverage up to 1:5000. Designed for smaller trades with better risk control and flexible trading.',
+    a: 'DPM offers multiple account types to suit different trading needs and experience levels:\n\nStandard Account: $20 minimum deposit, zero commission, leverage up to 1:5000. Ideal for beginners.\nVIP Account: $1,000 minimum deposit, $7 commission, tighter spreads. Suitable for active or professional traders.\nBonus (Bull) Account: $20 minimum deposit, $7 commission, leverage up to 1:100, includes promotional bonuses.\nCENT Account: $20 minimum deposit, zero commission, leverage up to 1:5000. Designed for smaller trades with better risk control and flexible trading.',
   },
   {
     q: 'Are Swap Fees Charged On Overnight Positions?',
