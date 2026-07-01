@@ -217,14 +217,15 @@ export default function HeroSection() {
                     href={slide.href}
                     target={slide.external ? '_blank' : undefined}
                     rel={slide.external ? 'noopener noreferrer' : undefined}
-                    className="px-5 py-2 md:px-6 md:py-2.5 text-sm md:text-base font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-90"
+                    className="px-7 py-3 md:px-6 md:py-2.5 text-base md:text-base font-bold rounded-lg transition-opacity duration-200 tracking-wide hover:opacity-90"
                     style={{
                       background: 'linear-gradient(135deg, #F0CC70 0%, #D4A843 40%, #F5D060 60%, #C49030 100%)',
                       color: '#1a0f00',
                       boxShadow: '0 8px 32px rgba(212,168,67,0.55)',
                     }}
                   >
-                    {slide.cta}
+                    <span className="md:hidden">{slide.cta === 'Learn More' ? 'Start Trading' : slide.cta}</span>
+                    <span className="hidden md:inline">{slide.cta}</span>
                   </Link>
                   <span className="text-xs text-white/30 font-medium tracking-wide">*Limited-Time Offer</span>
                 </div>
